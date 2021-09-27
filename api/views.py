@@ -1,21 +1,22 @@
-# from django.shortcuts import render
-# from rest_framework.decorators import api_view
-# from api import serializers
-# from rest_framework.response import Response
-# from rest_framework import status
-# from rest_framework.decorators import APIView
-# from rest_framework import generics
-# from rest_framework import mixins
-from .models import Post
-from .serializers import PostSerializer
+from .models import Post, User
+from .serializers import PostSerializer, UserSerializer
 from rest_framework import viewsets
-
-
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 class PostViewSet(viewsets.ModelViewSet):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
+	permission_classes = [AllowAny]
+	# authentication_classes = (TokenAuthentication)
+
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+
+
+
 
 
 
