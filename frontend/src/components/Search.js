@@ -1,16 +1,15 @@
 import React from 'react'
 
-//------------------------------ Search Icon Function ------------------------------ //
-const Search = () => {
+const Search = ({ isActive }) => {
 	
 	return (
-		<form action="/search/" role="search" className="search-form hidden">
+		<form action="/search/" role="search" className={isActive ? "search-form hidden" : "search-form"}>
 			<select name="filter">
 				<option value="pokemon">Pokemon</option>
 				<option value="people">People</option>
 			</select>
 			<input type="text" name="q" class="form-control" placeholder="Search DexApp..." />
-			<button id="search"><i className="material-icons">search</i></button>
+			<button id="search"><i className="material-icons">search</i> </button>
 		</form>
 	)
 }

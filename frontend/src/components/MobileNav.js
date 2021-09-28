@@ -1,11 +1,13 @@
 import React from 'react'
 import dex_icon from '../media/default/dex-icon.svg'
+import SearchBtn from './buttons/SearchBtn'
 
-const MobileNav = () => {
+const MobileNav = ({ searchToggle }) => {
+
 	return (
 		<>
 			<ul className="mobile-nav">
-				<li><i className="material-icons nav-icon search-icon">search</i></li>
+				<li><SearchBtn searchToggle={searchToggle} /></li>
 				
 				{/* {% if request.session.userid %}
 				<li>

@@ -355,6 +355,13 @@ Mobile Navigation Styles
     position: relative;
     top: 5px;
 }
+.nav-icon {
+	all:unset;
+    cursor: pointer;
+}
+    .nav-icon:hover {
+        color: var(--third);
+    }
 .mobile-nav img {
     position: relative;
 	width: 25px;
@@ -413,7 +420,7 @@ Mobile Side Menu Styles
         display: flex;
         font-size: .9em;
         margin-top: 10px;
-        justify-content: end;
+        justify-content: flex-end;
     }
         .mobile-nav-slider .follow-cnt p {
             color: gray;
@@ -635,12 +642,6 @@ Pop-up notification Styles
 .popup-search .search-form input {
     background-color: var(--secondary);
 }
-.nav-icon {
-    cursor: pointer;
-}
-    .nav-icon:hover {
-        color: var(--third);
-    }
 /*------------------------------------------------------------
 Modal Styles (Confirmation)
 ------------------------------------------------------------*/
@@ -817,7 +818,9 @@ Modal Styles (Confirmation)
         
     }
 }
-/*-------------------- At 800px --------------------*/
+/*##################################################################
+800px BREAK POINT
+##################################################################*/
 @media only screen and (min-width: 800px) {
     .search-icon {
         opacity: 0;
@@ -828,7 +831,9 @@ Modal Styles (Confirmation)
         width: 42%;
         right: 385px;
         background-color: transparent;
-        border-bottom: unset
+        border-bottom: unset;
+		z-index: 2;
+		
     }
     /* index  */
     p.team-title {
@@ -843,7 +848,9 @@ Modal Styles (Confirmation)
 }
 
 
-/*-------------------- At 1080px --------------------*/
+/*##################################################################
+1080px BREAK POINT
+##################################################################*/
 @media only screen and (min-width: 1080px) {
     .main .header-logo {
         background: url('../media/default/dex-logo-w.svg') no-repeat center center;
