@@ -1,18 +1,18 @@
 import React from 'react'
-import SearchBtn from './buttons/SearchBtn'
+import { Link } from 'react-router-dom'
 
-const Header = ({ searchToggle }) => {
+const Header = ({ searchBtn }) => {
 	return (
 		<header className="main">
 			{/* DexApp Logo */}
-			<a href="/" className="header-logo"> </a>
+			<Link to="/" className="header-logo" />
 			{/* Desktop Navigation */}
 			<ul className="main-nav"> 
-				<li><SearchBtn searchToggle={searchToggle} /></li>
-				<li><a href="/">Home</a></li>
-				<li><a href="/search/dex">Pokedex</a></li> 
-				<li className="bold"><a href="/login/register">Sign Up</a></li>
-				<li className="bold"><a href="/login/">Login</a></li>
+				<li>{searchBtn}</li>
+				<li><Link to="/">Home</Link></li>
+				<li><Link to="/dex">Pokedex</Link></li> 
+				<li className="bold"><Link to="/register">Sign Up</Link></li>
+				<li className="bold"><Link to="/login">Login</Link></li>
 			</ul>
 		</header>
 	)
