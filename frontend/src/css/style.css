@@ -170,7 +170,7 @@ form.search-form {
 	width: 100%;
 	padding: 10px;
 	background-color: var(--fourth);
-	border-top: 10px solid var(--secondary);
+	border-top: 5px solid var(--secondary);
 }
 	.search-form select {
 		border-radius: 1rem 0 0 1rem;
@@ -996,6 +996,6 @@ Logres Styles
             font-weight: 700;
         }
         .tag img {
-            width: 500px;
+            width: 430px;
         }
 }

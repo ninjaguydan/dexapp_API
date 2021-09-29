@@ -1,5 +1,7 @@
 import React from 'react'
 import pkmn from '../../media/default/pkmn.png'
+import Input from '../buttons/Input'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 	return (
@@ -10,22 +12,12 @@ const Login = () => {
 					<hr/>
 
 					<form action="/login/user_login" method="POST" id="login">
-						<div className="form-row">
-							<label for="email">Email</label>
-							<div>
-							<input type="email" name="email" className="form-control"/>
-							</div>
-						</div>
-						<div class = "form-row">
-							<label for="password">Password</label>
-							<div>
-							<input type="password" name="pw" className="form-control"/>
-							</div>
-						</div>
+						<Input label="Email" name="email" type="email" />
+						<Input label="Password" name="password" type="password" />
 						<div className="btn-container">
 							<button className="btn btn-primary">Log In</button>
-							<a className="btn btn-secondary" href="/login/register">Create New Account</a>
-							<a href="" className="reset-pw">Forgot my password</a>
+							<Link className="btn btn-secondary" to="/register">Create New Account</Link>
+							<Link to="" className="reset-pw">Forgot my password</Link>
 						</div>
 					</form>
 				</div>

@@ -9,6 +9,7 @@ import MobileNav from './components/MobileNav';
 import Search from './components/Search';
 import SearchBtn from './components/buttons/SearchBtn';
 import Login from './components/pages/Login';
+import Register from './components/pages/Register';
 import { BrowserRouter as MyRouter, Route, Switch } from 'react-router-dom';
 
 function Router() {
@@ -27,6 +28,7 @@ function Router() {
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route path="/login" component={Login} />
+				<Route path="/register" component={Register} />
 			</Switch>
 		</MyRouter>
 	)
