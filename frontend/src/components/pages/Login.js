@@ -22,7 +22,7 @@ const Login = () => {
 					</form>
 				</div>
 				<br/><br/><br/>
-				<div class="tag">
+				<div className="tag">
 					<h3 style={{"text-align": "center"}}>Welcome back!</h3>
 					<img src={pkmn} alt="trainer with 6 pokemon"/>
 				</div>

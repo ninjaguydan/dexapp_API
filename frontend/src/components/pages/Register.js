@@ -1,29 +1,66 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import pokeballs from '../../media/default/pokeball.png'
 import Input from '../buttons/Input'
 
 const Register = () => {
+
+	const [values, setValues] = useState({
+		name: '',
+		username: '',
+		email: '',
+		password: '',
+		confirm: ''
+	})
+	const [errors, setErrors] = useState({
+		// name: 'Field required',
+		// username: '',
+		// email: '',
+		// password: '',
+		// confirm: ''
+	})
+	const handleChange = (e) => {
+		const {name, value} = e.target
+		setValues({...values,[name]: value})
+		// setErrors(validator(values));
+		
+	}
+	const validator = (values) => {
+		let errors = {}
+		//Name Validator
+		if (values.name && values.name.trim().length < 2) {
+			errors.name = "Name must be at least 2 characters"
+		} else if (values.name.trim().length > 30) {
+			errors.name = "Name can't be more than 30 characters"
+		}
+		return errors
+	}
+	useEffect(() => {
+		setErrors(validator(values));
+		// console.log(values)
+	},[values])
+	
+	console.log(errors)
 	return (
 		<div className="wrapper">
 			<div className="log-wrapper">
-				<div class="logres">
+				<div className="logres">
 					<h2>Register</h2>
 					<hr/>
-					<form action="/login/signup" method="POST" id="registration" class="needs-validation">
-						<Input label="Name" name="name" errMax={50} errMin={2} />
-						<Input label="Username" name="username" errMax={13} errMin={5} />
-						<Input label="Email" name="email" type="email" error="Must enter a valid email address." />
-						<Input label="Password" name="password" type="password" errMax={16} errMin={8} />
-						<Input label="Confirm Password" name="confirm" type="password" class="confirm" error="Passwords do not match." />
-						<div class="btn-container">
-							<button class="btn btn-primary" disabled>Sign up</button>
-							<Link class="btn btn-secondary" to="/login">Log in</Link>
+					<form id="registration">
+						<Input label="Name" name="name" value={values.name} handleChange={handleChange} error={errors.name} />
+						<Input label="Username" name="username" />
+						<Input label="Email" name="email" type="email" error="" />
+						<Input label="Password" name="password" type="password" />
+						<Input label="Confirm Password" name="confirm" type="password" className="confirm" error="" />
+						<div className="btn-container">
+							<button className="btn btn-primary" disabled={errors}>Sign up</button>
+							<Link className="btn btn-secondary" to="/login">Log in</Link>
 						</div>
 					</form>
 				</div>
 				<br/><br/><br/>
-				<div class="tag">
+				<div className="tag">
 					<h3>Join a vast community of <span>Pokemon Trainers</span> from all over the world!</h3>
 					<img src={pokeballs} alt="assortment of 7 pokeballs"/>
 				</div>

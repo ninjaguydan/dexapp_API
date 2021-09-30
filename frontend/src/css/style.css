@@ -49,9 +49,8 @@ p, span {
 	.review-counter {
 		right: 171px;
 	}
-.error, .error2 {
+.error {
 	color: var(--primary);
-	display: none;
 }
 .flip-y {
 	transform: scaleY(-1);
@@ -713,7 +712,6 @@ Logres Styles
 	position: relative;
 }
 	.form-row div i {
-		display: none;
 		position: absolute;
 		top: 6px;
 		right: 10px;
