@@ -13,11 +13,7 @@ const Register = () => {
 		confirm: ''
 	})
 	const [errors, setErrors] = useState({
-		// name: 'Field required',
-		// username: '',
-		// email: '',
-		// password: '',
-		// confirm: ''
+
 	})
 	const handleChange = (e) => {
 		const {name, value} = e.target
@@ -71,9 +67,6 @@ const Register = () => {
 
 	useEffect(() => {
 		setErrors(validator(values));
-		console.log(values)
-		console.log(errors)
-		console.log(checkIfValues(values))
 	},[values])
 	
 	return (
