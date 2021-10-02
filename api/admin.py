@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Post, Profile, User
+from .models import Pokemon, Post, Profile, User, Type
 
 
 class AccountAdmin(UserAdmin):
@@ -16,3 +16,5 @@ class AccountAdmin(UserAdmin):
 admin.site.register(User, AccountAdmin)
 admin.site.register(Profile)
 admin.site.register(Post)
+admin.site.register(Type)
+admin.site.register(Pokemon)

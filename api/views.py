@@ -1,6 +1,6 @@
-from .models import Post, User
-from .serializers import PostSerializer, UserSerializer
-from rest_framework import viewsets
+from .models import Pokemon, Post, User, Type
+from .serializers import PokeSerializer, PostSerializer, UserSerializer, TypeSerializer
+from rest_framework import serializers, viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
@@ -15,7 +15,13 @@ class UserViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 
+class PokeViewSet(viewsets.ModelViewSet):
+	queryset = Pokemon.objects.all()
+	serializer_class = PokeSerializer
 
+class TypeViewSet(viewsets.ModelViewSet):
+	queryset = Type.objects.all()
+	serializer_class = TypeSerializer
 
 
 
