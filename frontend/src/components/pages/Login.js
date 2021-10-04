@@ -16,7 +16,7 @@ const Login = () => {
 	}
 
 	return (
-		<div className="wrapper">
+		<main className="wrapper">
 			<div className="log-wrapper">
 				<div className="logres">
 					<h2>Login</h2>
@@ -38,7 +38,7 @@ const Login = () => {
 					<img src={pkmn} alt="trainer with 6 pokemon"/>
 				</div>
 			</div>
-		</div>
+		</main>
 	)
 }
 

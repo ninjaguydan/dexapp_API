@@ -11,6 +11,8 @@ import SearchBtn from './components/buttons/SearchBtn';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import { BrowserRouter as MyRouter, Route, Switch } from 'react-router-dom';
+import Pokedex from './components/pages/Pokedex';
+import Pokemon from './components/pages/Pokemon';
 
 function Router() {
 	const [isActive, setActive] = useState('false')
@@ -29,6 +31,8 @@ function Router() {
 				<Route exact path="/" component={App} />
 				<Route path="/login" component={Login} />
 				<Route path="/register" component={Register} />
+				<Route path="/dex" component={Pokedex} />
+				<Route path="/pkmn/:id" component={Pokemon} />
 			</Switch>
 		</MyRouter>
 	)

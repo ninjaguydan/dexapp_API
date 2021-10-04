@@ -22,7 +22,7 @@ const MobileNav = ({ searchBtn }) => {
 				<li><a href="/profile/1"><img src="{{user.user_img.url}}" alt="profile pic" class="user-img {{user.bg_color}}"></a></li> */}
 				
 				<li><a href="/"><i className="material-icons">home</i></a></li>
-				<li><a href="/search/dex"><img src={dex_icon} alt="Pokedex" /></a></li>
+				<li><a href="/dex"><img src={dex_icon} alt="Pokedex" /></a></li>
 				<li><a href="/login/"><i className="material-icons">account_circle</i></a></li>
 			</ul>
 		</>

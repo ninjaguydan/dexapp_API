@@ -22,6 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
 		return user
 			
 class PokeSerializer(serializers.ModelSerializer):
+	types = serializers.StringRelatedField(many=True)
 	class Meta:
 		model = Pokemon
 		fields = "__all__"

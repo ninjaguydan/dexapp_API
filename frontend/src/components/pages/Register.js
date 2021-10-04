@@ -70,7 +70,7 @@ const Register = () => {
 	},[values])
 	
 	return (
-		<div className="wrapper">
+		<main className="wrapper">
 			<div className="log-wrapper">
 				<div className="logres">
 					<h2>Register</h2>
@@ -94,7 +94,7 @@ const Register = () => {
 				</div>
 			</div>
 			
-		</div>
+		</main>
 	)
 }
 
