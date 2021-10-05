@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ResultCard from './buttons/ResultCard'
-import { DisappearedLoading } from 'react-loadingg'
+// import { DisappearedLoading } from 'react-loadingg'
 
 const Results = () => {
 

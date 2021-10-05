@@ -5,7 +5,7 @@ const Pokedex = () => {
 
 	return (
 		<main className="wrapper">
-			<div className="column">
+			<div className="column search">
 				<h2>Pokedex</h2>
 				<Results />
 			</div>

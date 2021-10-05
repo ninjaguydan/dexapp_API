@@ -19,6 +19,15 @@ body {
 	background-color: var(--secondary);
 	position: relative;
 }
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+h5 {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 300;
+}
 nav {
 	list-style: none;
 }
@@ -34,6 +43,10 @@ option {
 p, span {
 	font-size: .8em;
 }
+small {
+    margin: 0 auto;
+    display: table;
+}
 .active {
 	color: var(--third) !important;
 }
@@ -46,12 +59,12 @@ p, span {
 	color: gray;
 	bottom: 15px;
 }
-	.comment-counter {
-		bottom: 30px;
-	}
-	.review-counter {
-		right: 171px;
-	}
+.comment-counter {
+	bottom: 30px;
+}
+.review-counter {
+	right: 171px;
+}
 .error {
 	color: var(--primary);
 }
@@ -65,6 +78,7 @@ p, span {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 form.search-form.hidden {
 	display: none;
 }
@@ -72,7 +86,7 @@ form.search-form.hidden {
 	color: gray;
 	font-size: .6rem;
 }
-.warning {
+small.counter.warning {
 	color: var(--primary);
 }
 .wrapper {
@@ -383,7 +397,7 @@ Mobile Navigation Styles
 .mobile-nav img {
 	position: relative;
 	width: 25px;
-	top: .25rem;
+	top: .05rem;
 }
 .mobile-nav .user-img {
 	height: 40px;
@@ -553,7 +567,7 @@ margin-bottom: 3px;
 		}
 .card form {
 	flex: 1;
-	/* width: 100%; */
+
 }
 .card form textarea::placeholder {
 	font-size: .8em;
@@ -753,20 +767,6 @@ Result Styles
     margin: 0 auto;
     max-width: 609px;
 }
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-h5 {
-    text-align: center;
-    margin-top: 15px;
-    font-size: .9em;
-    font-weight: 300;
-}
-small {
-    margin: 0 auto;
-    display: table;
-}
 .card small {
     color: gray;
     margin-top: 5px;
@@ -820,10 +820,7 @@ small {
     }
     .results .filters {
         position: relative;
-}
-.wrapper {
-    justify-content: space-around;
-}
+	}
 /*------------------------------------------------------------
 Profile Styles 
 ------------------------------------------------------------*/
@@ -846,6 +843,9 @@ Profile Styles
         border-radius: 50%;
         width: 50%;
         margin: 24px 0;
+    }
+    .list-group-item.pkmn img {
+        width: 90%;
     }
     .list-group-item h4 {
         margin-bottom: .25rem;
@@ -910,6 +910,96 @@ Profile Styles
         .striped:nth-of-type(odd) {
             background-color: #444444;
         }
+		.posts {
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		.card-item span.star {
+			font-size: 1.25em;
+		}
+		.card h5 {
+			width: 100%;
+			text-align: center;
+		}
+		.card h6 {
+			margin: 0;
+		}
+		.pkmn-img {
+			display: none;
+			width: 15%;
+			height: 15%;
+			border-radius: 50%;
+			background-color: #424242;
+		}
+		/* Tab Styles */
+		.tab-nav {
+			display: flex;
+			margin-bottom: 0;
+			justify-content: space-between;
+			width: 100%;
+		}
+			.tab-nav li {
+				flex: 1 0 20%;
+				text-align: center;
+			}
+				.tab-nav li a {
+					padding: 10px;
+					display: block;
+					background-color: var(--fourth);
+					border-radius: .25rem .25rem 0 0;
+					font-size: 0.75em;
+				}
+				.tab-nav li a.active {
+					border-bottom: 2px solid var(--third);
+				}
+		
+		/* Favorites Styles */
+		.card-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			text-align: center;
+			row-gap: 1.25rem;
+		}
+			.card-grid h5 {
+				grid-column: 1 / span 4;
+			}
+			.card-grid a img {
+				border-radius: 50%;
+				background-color: #444444;
+				width: 70%;
+				margin-bottom: 10px;
+				margin-top: 20px;
+				transition: transform .2s;
+			}
+				.card-grid a img:hover {
+					transform: scale(1.125);
+				}
+		
+		/* Team Tab Styles */
+		.card h5.team-title {
+			text-align: left;
+			margin-bottom: 20px;
+		}
+		.team-grid {
+			display: grid;
+			width: 90%;
+			grid-template-columns: 1fr 1fr;
+			row-gap: 10px;
+		}
+		.team-grid a {
+			text-align: center;
+			width: 100%;
+		}
+			.team-grid a img {
+				background-color: #444444;
+				border-radius: 50%;
+				transition: transform .2s;
+				width: 60%;
+				margin-bottom: 10px;
+			}
+				.team-grid a img:hover {
+					transform: scale(1.0625);
+				}
 
 .list-group-item img {
     border-radius:unset;
@@ -1352,11 +1442,11 @@ button.add {
         .tag img {
             width: 430px;
         }
-		.column {
-			width: 80%;
-			max-width: 840px;
-		}
-		.results {
-			grid-template-columns: 1fr 1fr 1fr 1fr;
-		}
+	.search {
+		width: 80%;
+		max-width: 840px;
+	}
+	.results {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
 }

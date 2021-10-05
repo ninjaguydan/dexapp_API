@@ -11,3 +11,9 @@ export function makeHundreds(num) {
 		return num
 	}
 }
+
+export function getTotal(arr){
+	return arr.reduce((a,b) => {
+		return a + b
+	}, 0)
+}
