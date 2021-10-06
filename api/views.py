@@ -1,5 +1,5 @@
-from .models import Pokemon, Post, User, Type
-from .serializers import PokeSerializer, PostSerializer, UserSerializer, TypeSerializer
+from .models import Pokemon, Post, User, Type, Review
+from .serializers import PokeSerializer, PostSerializer, ReviewSerializer, UserSerializer, TypeSerializer
 from rest_framework import serializers, viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 class PostViewSet(viewsets.ModelViewSet):
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer
-	permission_classes = [AllowAny]
+	permission_classes = [IsAuthenticated]
 	# authentication_classes = (TokenAuthentication)
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,7 +23,9 @@ class TypeViewSet(viewsets.ModelViewSet):
 	queryset = Type.objects.all()
 	serializer_class = TypeSerializer
 
-
+class ReviewViewSet(viewsets.ModelViewSet):
+	queryset = Review.objects.all()
+	serializer_class = ReviewSerializer
 
 
 

@@ -1,11 +1,16 @@
 from django.db.models import fields
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-from .models import Pokemon, Post, Type, User
+from .models import Pokemon, Post, Review, Type, User
 
 class PostSerializer(ModelSerializer):
 	class Meta:
 		model = Post
+		fields = "__all__"
+
+class ReviewSerializer(ModelSerializer):
+	class Meta:
+		model = Review
 		fields = "__all__"
 
 class UserSerializer(serializers.ModelSerializer):
@@ -32,3 +37,4 @@ class TypeSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Type
 		fields = "__all__"
+

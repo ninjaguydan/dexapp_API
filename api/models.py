@@ -59,12 +59,12 @@ class UserManager(BaseUserManager):
 				user.user_img = postData['img']         
 		user.save()
 
-	def authenticate(self, email, password):
-		users = self.filter(email = email)
-		if not users:
-			return False
-		user = users[0]
-		return user.check_password(password)
+	# def authenticate(self, email, password):
+	# 	users = self.filter(email = email)
+	# 	if not users:
+	# 		return False
+	# 	user = users[0]
+	# 	return user.check_password(password)
 
 	def create_user(self, name, email, username, password, last_login, is_admin, is_active, is_staff, is_superuser, bg_color):
 		user = self.model(
@@ -78,13 +78,13 @@ class UserManager(BaseUserManager):
 		Profile.objects.create(user=user)
 		return user
 	
-	def register(self, form):
-		return self.create_user(
-			name = form['name'],
-			username = form['username'],
-			email = form['email'],
-			password = form['pw']
-		)
+	# def register(self, form):
+	# 	return self.create_user(
+	# 		name = form['name'],
+	# 		username = form['username'],
+	# 		email = form['email'],
+	# 		password = form['pw']
+	# 	)
 
 	def create_superuser(self, name, email, username, password):
 		user = self.create_user(
@@ -221,24 +221,6 @@ class PokeManager(models.Manager):
 				else:
 					pkmn.immune_to.add(immunity)
 
-	# def rating_avg(self, pkmn_id):
-	# 	pkmn = Pokemon.objects.get(id = pkmn_id)
-	# 	total = 0
-	# 	for review in pkmn.reviews.all():
-	# 		total += review.rating
-	# 	avg = total/len(pkmn.reviews.all())
-	# 	return round(avg, 2)
-
-	def get_total(self, index):
-		pkmn = Pokemon.objects.get(id = index)
-		total = 0
-		total += pkmn.hp
-		total += pkmn.attack
-		total += pkmn.defense
-		total += pkmn.sp_attack
-		total += pkmn.sp_defense
-		total += pkmn.speed
-		return total
 
 class TypeManager(models.Manager):
 	def create_type(self, index):
@@ -265,6 +247,29 @@ class TypeManager(models.Manager):
 				type_to_add = Type.objects.get(name = immunity['name'])
 				current_type.immune_to.add(type_to_add)
 
+
+class ReviewManager(models.Manager):
+	def new_review(self, postData, user, pkmn):
+		if len(postData['review']) < 1 or len(postData['review']) > 255:
+			return None
+		else:
+			return Review.objects.create(
+				content = postData['review'],
+				rating = postData['rating'],
+				added_by = user,
+				pkmn = pkmn
+			)
+
+
+class PostManager(models.Manager):
+	def new_post(self, user, postData):
+		if len(postData['post']) < 1 or len(postData['post']) > 255:
+			return None
+		else:
+			return Post.objects.create(
+				content = postData['post'],
+				added_by = user,
+			)
 
 #------------------------------------------#
 # Models
@@ -308,10 +313,12 @@ class Profile(models.Model):
 		return self.user.name
 
 class Post(models.Model):
-	User		= models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
 	content		= models.TextField()
+	added_by	= models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
+	likes 		= models.ManyToManyField(User, related_name = "liked_posts", blank=True)
 	created		= models.DateTimeField(auto_now_add=True)
 	updated		= models.DateTimeField(auto_now=True)
+	objects 	= PostManager()
 
 	def __str__(self):
 		return self.content
@@ -349,24 +356,15 @@ class Pokemon(models.Model):
 		return f"{self.id} {self.name.capitalize()}"
 
 
-#------------------------------------------#
-# Initialize Pokemon and Types ONCE
-# -----------------------------------------#
-# def ready(self):
-# 	if len(Type.objects.all()) == 0:
-# 		# Create table for all 18 types
-# 		for i in range(1,19):
-# 			Type.objects.create_type(i)
-# 		# Create Type relationships
-# 		for t in Type.objects.all():
-# 			Type.objects.add_relation(t.id)
+class Review(models.Model):
+	content = models.TextField()
+	rating = models.IntegerField()
+	added_by = models.ForeignKey(User, related_name = "reviews_added", null = True, on_delete = models.CASCADE)
+	pkmn = models.ForeignKey(Pokemon, related_name = "reviews", null = True, on_delete = models.CASCADE)
+	likes = models.ManyToManyField(User, related_name = "liked_reviews", blank=True)
+	created = models.DateTimeField(auto_now_add = True)
+	updated = models.DateTimeField(auto_now = True)
+	objects = ReviewManager()
 
-# 	if len(Pokemon.objects.all()) == 0:
-# 		for i in range(1,899):
-# 			Pokemon.objects.create_pkmn(i)
-# 			#add types to pokemon
-# 			Pokemon.objects.add_types(i)
-# 			#add weakness/resistance info to pokemon
-# 			Pokemon.objects.add_weaknesses(i)
-# 			#add gen
-# 			Pokemon.objects.add_gen(i)
+	def __str__(self):
+		return f"{self.pkmn.name.capitalize()} - {self.rating} Stars"

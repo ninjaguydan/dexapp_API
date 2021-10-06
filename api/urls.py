@@ -7,6 +7,7 @@ router.register('posts', views.PostViewSet, basename="posts")
 router.register('users', views.UserViewSet)
 router.register('pokemon', views.PokeViewSet)
 router.register('types', views.TypeViewSet)
+router.register('reviews', views.ReviewViewSet)
 
 urlpatterns = [
 	path('', include(router.urls))
