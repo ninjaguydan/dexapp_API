@@ -37,8 +37,8 @@ const PostForm = (props) => {
 					placeholder={ props.pkmn ? `What do you think of ${ titleCase(props.pkmn)}?` : "What's on your mind?"}>
 				</textarea>
 				<small className="counter review-counter">255/255</small>
-				<div className="btn-container" style={ props.type == "post" ? {"display":"inherit"} : null } >
-					{ props.type == "review" ? <div className="form-row">
+				<div className="btn-container btn-container-rating" style={ props.type == "post" ? {"display":"inherit"} : null } >
+					{ props.type == "review" ? <div className="form-row form-row-rating">
 									<label>Rating</label>
 									<select name="rating"  className="form-control form-control-custom" onChange={(e) => props.handleChange(e)} value={props.values.rating}>
 										<option value="1">1</option>
@@ -55,7 +55,7 @@ const PostForm = (props) => {
 								</div>
 					: null }
 					
-					<button className="btn btn-primary btn-post" disabled>Post</button>
+					<button className="btn btn-primary btn-post" disabled={ content_cnt > 0 && content_cnt < 255 ? "" : "diaabled" }>Post</button>
 				</div>
 			</form>
 		</div>

@@ -14,8 +14,7 @@ const Profile = ({ pokemon }) => {
 		nxt = 1
 	}
 
-	let statArr = []
-	statArr.push(pokemon.hp, pokemon.attack, pokemon.defense, pokemon.sp_attack, pokemon.sp_defense, pokemon.speed)
+	let statArr = [pokemon.hp, pokemon.attack, pokemon.defense, pokemon.sp_attack, pokemon.sp_defense, pokemon.speed]
 
 
 	return (
