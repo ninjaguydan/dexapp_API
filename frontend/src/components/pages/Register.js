@@ -27,32 +27,26 @@ const Register = () => {
 		} else if (values.name.trim().length > 30) {
 			errors.name = "Name can't be more than 30 characters"
 		}
-
 		//Username Validator
 		if (values.username && values.username.trim().length < 5) {
 			errors.username = "Username must be at least 5 characters"
 		} else if (values.name.trim().length > 15) {
 			errors.name = "Name can't be more than 15 characters"
 		}
-
 		//Email validator
 		const regex = RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 		if (values.email && !regex.test(values.email) ) {
 			errors.email = "Invalid email address"
 		} 
-
 		//Password Validator
 		if (values.password && values.password.length < 8) {
 			errors.password = "Password must be at least 8 characters"
 		} else if (values.password.length > 16) {
 			errors.password = "Password can't be more than 16 characters"
 		}
-
 		if (values.confirm && values.confirm !== values.password ) {
 			errors.confirm = "Passwords do not match"
 		}
-
-
 		return errors
 	}
 	
@@ -61,7 +55,6 @@ const Register = () => {
 	}
 	const checkIfValues = (obj) => {
 		let values = Object.values(obj)
-		// return !values.some((x) => x !== null && x !== '')
 		return values.every((x) => x !== null && x !== '')
 	}
 

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { titleCase } from '../Helpers.js/Helper'
 import img from '../../media/default/0.png'
 
 const PostForm = (props) => {
 
 	let content_cnt
-	if ( props.type == "review" ) {
+	if ( props.type === "review" ) {
 		content_cnt = props.values.review.length
-	} else if ( props.type == "post" ) {
+	} else if ( props.type === "post" ) {
 		content_cnt = props.values.post.length
 	}
 
@@ -22,11 +22,11 @@ const PostForm = (props) => {
 		} else {
 			counter.classList.remove('warning')
 		}
-	}, [props.values])
+	}, [props.values, content_cnt])
 
 	return (
 		<div className="card">
-			<img src={img} alt="profile image" className="card-item user-img form-post-img gray" />
+			<img src={img} alt="profile" className="card-item user-img form-post-img gray" />
 			<form>
 				<textarea 
 					className="form-control form-control-custom" 
@@ -34,11 +34,11 @@ const PostForm = (props) => {
 					rows="2"
 					value={props.values.review}
 					onChange={(e) => props.handleChange(e)}
-					placeholder={ props.pkmn ? `What do you think of ${ titleCase(props.pkmn)}?` : "What's on your mind?"}>
+					placeholder={ props.pkmn ? `What do you think of ${ titleCase(props.pkmn) }?` : "What's on your mind?"}>
 				</textarea>
 				<small className="counter review-counter">255/255</small>
-				<div className="btn-container btn-container-rating" style={ props.type == "post" ? {"display":"inherit"} : null } >
-					{ props.type == "review" ? <div className="form-row form-row-rating">
+				<div className="btn-container btn-container-rating" style={ props.type === "post" ? {"display":"inherit"} : null } >
+					{ props.type === "review" ? <div className="form-row form-row-rating">
 									<label>Rating</label>
 									<select name="rating"  className="form-control form-control-custom" onChange={(e) => props.handleChange(e)} value={props.values.rating}>
 										<option value="1">1</option>
