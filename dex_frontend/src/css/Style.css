@@ -1,0 +1,82 @@
+/*------------------------------------------------------------
+Universal Styles
+------------------------------------------------------------*/
+* {
+	/* outline: 1px dotted magenta; */
+}
+:root {
+	--brand-primary: #f12849;
+	--brand-secondary: #009df1;
+	--brand-gray1: #191919;
+	--brand-gray2: #353535;
+	--brand-gray3: #ced4da;
+}
+.light {
+	/*add class to Body for 'light mode'*/
+	--brand-primary: #f12849;
+	--brand-secondary: #009df1;
+	--brand-gray1: #191919;
+	--brand-gray2: #353535;
+	--brand-gray3: #ced4da;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	color: var(--brand-gray3);
+	background-color: var(--brand-gray1);
+	position: relative;
+}
+a {
+	color: var(--brand-gray3);
+}
+/*==========================================================
+Navigation Styles
+==========================================================*/
+
+/*Header*/
+.main {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	border-bottom: 1px solid var(--brand-gray1);
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--brand-gray2);
+}
+.main .header-logo {
+	background: url("../media/dex-icon-w.svg") no-repeat center center;
+	background-size: contain;
+	width: 40px;
+	height: 40px;
+}
+.main-nav {
+	display: none;
+}
+/*---------- 550px BREAK POINT ----------*/
+@media only screen and (min-width: 550px) {
+	.main {
+		padding: 1rem 2rem;
+	}
+	.main-nav {
+		display: flex;
+		justify-content: space-between;
+		width: 400px;
+		margin: 0;
+		align-items: center;
+	}
+	.main-nav a:hover {
+		color: var(--brand-secondary);
+	}
+}
+
+/*---------- 1080px BREAK POINT ----------*/
+@media only screen and (min-width: 1080px) {
+	.main .header-logo {
+		background: url("../media/dex-logo-w.svg") no-repeat center center;
+		background-size: contain;
+		width: 150px;
+		height: 50px;
+	}
+}
