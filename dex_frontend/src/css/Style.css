@@ -1,23 +1,115 @@
 /*==========================================================
+Form Styles
+==========================================================*/
+.form-control:focus {
+	border-color: #e58494;
+	box-shadow: 0 0 0 0.25rem rgb(253 49 88 / 25%);
+}
+.form-control-custom {
+	padding-left: 0;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid var(--fifth);
+	color: var(--fifth);
+}
+.form-control-custom:focus {
+	color: var(--fifth);
+	box-shadow: none;
+	border-color: none;
+	background-color: transparent;
+}
+
+/*Form Styles*/
+.search-form {
+	display: flex;
+	z-index: 1;
+	position: fixed;
+	bottom: 75px;
+	flex-direction: row;
+	width: 100%;
+	padding: 10px;
+	background-color: var(--brand-gray2);
+	border-top: 2px solid var(--brand-gray1);
+}
+.search-form select {
+	border-radius: 1rem 0 0 1rem;
+	padding-left: 10px;
+	padding-right: 5px;
+	background-color: #282828;
+	color: var(--brand-gray3);
+	border: none;
+}
+.search-form input {
+	background-color: #2c2c2c;
+	border: none;
+	border-radius: 0;
+	color: var(--brand-gray3);
+}
+.search-form input:focus {
+	box-shadow: none;
+	background-color: #2c2c2c;
+	color: var(--brand-gray3);
+}
+.search-form button {
+	/* all: unset; */
+	width: 40px;
+	border: none;
+	border-radius: 0 1rem 1rem 0;
+	background-color: #2c2c2c;
+	color: var(--brand-gray3);
+	position: relative;
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.search-form button i {
+	position: absolute;
+	top: 6px;
+	left: 0;
+}
+.search-form button i:hover {
+	color: var(--brand-secondary);
+}
+/*---------- 550px BREAK POINT ----------*/
+@media only screen and (min-width: 550px) {
+	.search-form {
+		z-index: 1;
+		bottom: unset;
+		top: 71px;
+		width: 100%;
+		border-top: unset;
+		border-bottom: 10px solid var(--secondary);
+	}
+}
+/*---------- 800px BREAK POINT ----------*/
+@media only screen and (min-width: 800px) {
+	.search-icon {
+		opacity: 0;
+	}
+	.search-form {
+		display: flex !important;
+		top: 10px;
+		width: 42%;
+		right: 385px;
+		background-color: transparent;
+		border-bottom: unset;
+		z-index: 2;
+	}
+}
+/*---------- 1080px BREAK POINT ----------*/
+@media only screen and (min-width: 1080px) {
+	.search-form {
+		top: 15px;
+	}
+}
+/*==========================================================
 Global Styles
 ==========================================================*/
 * {
-	outline: 1px dotted magenta;
+	/* outline: 1px dotted magenta; */
 }
-:root {
-	--brand-primary: #f12849;
-	--brand-secondary: #009df1;
-	--brand-gray1: #191919;
-	--brand-gray2: #353535;
-	--brand-gray3: #ced4da;
-}
-.light {
-	/*add class to Body for 'light mode'*/
-	--brand-primary: #f12849;
-	--brand-secondary: #009df1;
-	--brand-gray1: #191919;
-	--brand-gray2: #353535;
-	--brand-gray3: #ced4da;
+a {
+	color: var(--brand-gray3);
 }
 body {
 	font-family: "Poppins", sans-serif;
@@ -26,8 +118,27 @@ body {
 	background-color: var(--brand-gray1);
 	position: relative;
 }
-a {
-	color: var(--brand-gray3);
+:root {
+	--brand-primary: #f12849;
+	--brand-secondary: #009df1;
+	--brand-gray1: #191919;
+	--brand-gray2: #353535;
+	--brand-gray3: #ced4da;
+}
+.bold {
+	font-weight: 700;
+}
+.hidden {
+	display: none;
+}
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
 }
 /*==========================================================
 Header Styles
@@ -49,16 +160,31 @@ Header Styles
 	width: 40px;
 	height: 40px;
 }
+.search-icon {
+	all: unset;
+	cursor: pointer;
+}
+.search-icon:hover {
+	color: var(--brand-secondary);
+}
+.search-icon:focus-visible {
+	outline: -webkit-focus-ring-color auto 1px;
+}
 /*---------- 550px BREAK POINT ----------*/
 @media only screen and (min-width: 550px) {
 	.site-header {
 		padding: 1rem 2rem;
 	}
 }
-
+/*---------- 800px BREAK POINT ----------*/
+@media only screen and (min-width: 800px) {
+	.nav-icon.search-icon {
+		display: none;
+	}
+}
 /*---------- 1080px BREAK POINT ----------*/
 @media only screen and (min-width: 1080px) {
-	.main .header-logo {
+	.site-header .header-logo {
 		background: url("../media/dex-logo-w.svg") no-repeat center center;
 		background-size: contain;
 		width: 150px;
@@ -98,7 +224,7 @@ Navigation Styles
 	width: 25px;
 	top: 5px;
 }
-.mobile-nav a:hover {
+.mobile-nav .material-icons:hover {
 	color: var(--brand-secondary);
 }
 /*---------- 550px BREAK POINT ----------*/
@@ -112,5 +238,8 @@ Navigation Styles
 	}
 	.main-nav a:hover {
 		color: var(--brand-secondary);
+	}
+	.mobile-nav {
+		display: none;
 	}
 }

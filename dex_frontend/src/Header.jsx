@@ -2,11 +2,11 @@ import React from "react"
 import { Link } from "react-router-dom"
 import DesktopNav from "./DesktopNav"
 
-const Header = () => {
+const Header = ({ searchBtn }) => {
 	return (
 		<header className="site-header">
 			<Link to="/" className="header-logo" />
-			<DesktopNav />
+			<DesktopNav searchBtn={searchBtn} />
 		</header>
 	)
 }

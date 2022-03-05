@@ -1,21 +1,34 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
-const DesktopNav = () => {
+const activeStyle = {
+	color: "#009df1",
+}
+
+const DesktopNav = ({ searchBtn }) => {
 	return (
 		<nav>
 			<ul className="main-nav">
+				<li>{searchBtn}</li>
 				<li>
-					<Link to="/">Home</Link>
+					<NavLink to="/" activeStyle={activeStyle}>
+						Home
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/dex">Pokedex</Link>
+					<NavLink to="/dex" activeStyle={activeStyle}>
+						Pokedex
+					</NavLink>
 				</li>
 				<li className="bold">
-					<Link to="/register">Sign Up</Link>
+					<NavLink to="/register" activeStyle={activeStyle}>
+						Sign Up
+					</NavLink>
 				</li>
 				<li className="bold">
-					<Link to="/login">Login</Link>
+					<NavLink to="/login" activeStyle={activeStyle}>
+						Login
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

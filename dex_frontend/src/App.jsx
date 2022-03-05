@@ -4,12 +4,23 @@ import "./css/Reset.css"
 import "./css/Style.css"
 import Header from "./Header"
 import MobileNav from "./MobileNav"
+import SearchBtn from "./SearchBtn"
+import SearchBar from "./SearchBar"
+import { useState } from "react"
 
 function App() {
+	const searchBtn = <SearchBtn toggleSearch={toggleSearch} />
+	const [showSearchBar, setShowSearchBar] = useState(false)
+
+	function toggleSearch() {
+		setShowSearchBar(!showSearchBar)
+	}
+
 	return (
 		<>
-			<Header />
-			<MobileNav />
+			<Header searchBtn={searchBtn} />
+			<SearchBar showSearchBar={showSearchBar} />
+			<MobileNav searchBtn={searchBtn} />
 		</>
 	)
 }
