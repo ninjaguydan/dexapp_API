@@ -1,4 +1,39 @@
 /*==========================================================
+0 - Global Styles
+==========================================================*/
+* {
+	/* outline: 1px dotted magenta; */
+}
+a {
+	color: var(--brand-gray3);
+}
+body {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	color: var(--brand-gray3);
+	background-color: var(--brand-gray1);
+	position: relative;
+}
+:root {
+	--brand-primary: #f12849;
+	--brand-secondary: #009df1;
+	--brand-gray1: #191919;
+	--brand-gray2: #353535;
+	--brand-gray3: #ced4da;
+}
+.bold {
+	font-weight: 700;
+}
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+}
+/*==========================================================
 Form Styles
 ==========================================================*/
 .form-control:focus {
@@ -51,7 +86,6 @@ Form Styles
 	color: var(--brand-gray3);
 }
 .search-form button {
-	/* all: unset; */
 	width: 40px;
 	border: none;
 	border-radius: 0 1rem 1rem 0;
@@ -69,6 +103,9 @@ Form Styles
 }
 .search-form button i:hover {
 	color: var(--brand-secondary);
+}
+.search-form.hidden {
+	display: none;
 }
 /*---------- 550px BREAK POINT ----------*/
 @media only screen and (min-width: 550px) {
@@ -101,44 +138,6 @@ Form Styles
 	.search-form {
 		top: 15px;
 	}
-}
-/*==========================================================
-Global Styles
-==========================================================*/
-* {
-	/* outline: 1px dotted magenta; */
-}
-a {
-	color: var(--brand-gray3);
-}
-body {
-	font-family: "Poppins", sans-serif;
-	font-size: 16px;
-	color: var(--brand-gray3);
-	background-color: var(--brand-gray1);
-	position: relative;
-}
-:root {
-	--brand-primary: #f12849;
-	--brand-secondary: #009df1;
-	--brand-gray1: #191919;
-	--brand-gray2: #353535;
-	--brand-gray3: #ced4da;
-}
-.bold {
-	font-weight: 700;
-}
-.hidden {
-	display: none;
-}
-.sr-only {
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
 }
 /*==========================================================
 Header Styles
@@ -192,6 +191,63 @@ Header Styles
 	}
 }
 
+/*==========================================================
+Menu Button Styles
+==========================================================*/
+.menu-btn {
+	width: 30px;
+	height: 30px;
+	background: unset;
+	border: unset;
+	position: fixed;
+	right: 30px;
+	top: 20px;
+	display: flex;
+	align-items: center;
+	z-index: 10;
+	transition: all 0.1s ease-in-out;
+}
+.menu-btn_burger {
+	width: 30px;
+	height: 2px;
+	background: white;
+	transition: all 0.1s ease-in-out;
+}
+.menu-btn_burger::before,
+.menu-btn_burger::after {
+	content: "";
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	left: 0;
+	background: white;
+	transition: all 0.1s ease-in-out;
+}
+.menu-btn_burger::before {
+	transform: translateY(-10px);
+	transform-origin: left, top;
+}
+.menu-btn_burger::after {
+	transform: translateY(10px);
+	transform-origin: left, bottom;
+}
+.menu-btn.open .menu-btn_burger {
+	background: transparent;
+}
+.menu-btn.open .menu-btn_burger::before {
+	background-color: var(--brand-secondary);
+	transform: rotate(45deg);
+}
+.menu-btn.open .menu-btn_burger::after {
+	background-color: var(--brand-secondary);
+	transform: rotate(-45deg);
+}
+/*---------- 550px BREAK POINT ----------*/
+@media only screen and (min-width: 550px) {
+	.menu-btn {
+		display: none;
+	}
+}
 /*==========================================================
 Navigation Styles
 ==========================================================*/
