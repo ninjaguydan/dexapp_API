@@ -1,0 +1,60 @@
+.login-registration {
+	background-color: var(--brand-gray2);
+	width: 100%;
+	max-width: 500px;
+	margin: 2rem auto 0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+.login-registration form .form-row {
+	margin-bottom: 1rem;
+}
+.login-registration form .form-row label {
+	margin-bottom: 5px;
+}
+.btn-container {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+.btn-container button {
+	margin-bottom: 1rem;
+}
+.tag-line {
+	margin: 7rem auto 0;
+	width: 100%;
+	text-align: center;
+}
+.tag-line .header1 {
+	margin-bottom: 1rem;
+}
+.tag-line img {
+	width: 100%;
+}
+strong {
+	display: block;
+	margin: 1.5rem 0;
+}
+/*---------- 1080px BREAK POINT ----------*/
+@media only screen and (min-width: 1080px) {
+	.tag-line {
+		max-width: 500px;
+	}
+	.log-res-wrapper {
+		position: absolute;
+		top: 50vh;
+		left: 50vw;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 1080px;
+		/* width: 100%; */
+		/* height: fit-content; */
+	}
+	.login-registration,
+	.tag-line {
+		margin: 0;
+	}
+}

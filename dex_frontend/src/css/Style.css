@@ -16,10 +16,12 @@ body {
 }
 :root {
 	--brand-primary: #f12849;
+	--brand-primary-dark: #ca0b2b;
 	--brand-secondary: #009df1;
 	--brand-gray1: #191919;
 	--brand-gray2: #353535;
 	--brand-gray3: #ced4da;
+	--brand-gray4: #6c757d;
 }
 .bold {
 	font-weight: 700;
@@ -32,6 +34,44 @@ body {
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
+}
+.user-img {
+	border-radius: 50%;
+	background-color: var(--brand-gray2);
+}
+.app-container {
+	padding: 90px 15px 30px;
+}
+.header1 {
+	font-size: 1.75rem;
+	font-weight: 500;
+	line-height: 1.25rem;
+}
+.header1.bold {
+	color: var(--brand-secondary);
+}
+/*==========================================================
+Button Styles
+==========================================================*/
+.btn {
+	color: white;
+}
+.btn.primary {
+	background-color: var(--brand-primary);
+}
+.btn.primary:hover,
+.btn.primary:focus {
+	background-color: var(--brand-primary-dark);
+	border-color: var(--brand-primary-dark);
+	color: white;
+}
+.btn.secondary {
+	border: 1px solid var(--brand-gray4);
+}
+.btn.secondary:hover,
+.btn.secondary:focus {
+	background-color: var(--brand-gray4);
+	color: white;
 }
 /*==========================================================
 Form Styles
@@ -154,7 +194,7 @@ Header Styles
 	background-color: var(--brand-gray2);
 }
 .site-header .header-logo {
-	background: url("../media/dex-icon-w.svg") no-repeat center center;
+	background: url("../media/dex-icon-4c.svg") no-repeat center center;
 	background-size: contain;
 	width: 40px;
 	height: 40px;
@@ -283,6 +323,66 @@ Navigation Styles
 .mobile-nav .material-icons:hover {
 	color: var(--brand-secondary);
 }
+/* Slider Menu Overlay | Only visible when user is logged in */
+.mobile-nav-slider {
+	position: fixed;
+	z-index: 2;
+	right: 0;
+	background-color: var(--brand-gray1);
+	border-left: 1px solid gray;
+	border-radius: 0.5rem 0 0 0.5rem;
+	width: 80vw;
+	height: 100%;
+	padding: 30px;
+	animation: overlay 0.3s forwards;
+}
+.mobile-nav-slider.hidden {
+	display: none;
+}
+.mobile-nav-slider .user-img {
+	width: 70px;
+	height: 70px;
+	margin-bottom: 10px;
+}
+.mobile-nav-slider .username {
+	color: gray;
+	margin-top: 5px;
+}
+.mobile-nav-slider .follow-cnt {
+	display: flex;
+	margin-top: 1.3rem;
+	justify-content: flex-start;
+}
+.mobile-nav-slider .follow-cnt p {
+	color: gray;
+	margin-right: 1rem;
+}
+.mobile-nav-slider .follow-cnt p span {
+	color: var(--brand-gray3);
+}
+.mobile-nav-slider ul {
+	margin-top: 30px;
+}
+.mobile-nav-slider li {
+	height: 3rem;
+	display: flex;
+	margin-bottom: 1rem;
+}
+.mobile-nav-slider ul li a {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.mobile-nav-slider ul li a i {
+	position: relative;
+	top: -2px;
+	margin-right: 1rem;
+}
+.mobile-nav-slider li a img {
+	width: 1.5rem;
+	margin-right: 1rem;
+}
 /*---------- 550px BREAK POINT ----------*/
 @media only screen and (min-width: 550px) {
 	.main-nav {
@@ -297,5 +397,19 @@ Navigation Styles
 	}
 	.mobile-nav {
 		display: none;
+	}
+	.mobile-nav-slider {
+		display: none;
+	}
+}
+/*---------- Mobile Menu Animation ----------*/
+@keyframes overlay {
+	from {
+		opacity: 0;
+		transform: translateX(300px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }

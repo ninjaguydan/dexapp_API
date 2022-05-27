@@ -1,5 +1,5 @@
 import React from "react"
-import dex_icon from "./media/dex-icon.svg"
+import dex_icon from "../../media/dex-icon-w.svg"
 import { Link } from "react-router-dom"
 
 const MobileNav = ({ searchBtn }) => {
@@ -22,7 +22,7 @@ const MobileNav = ({ searchBtn }) => {
 					</Link>
 				</li>
 				<li>
-					<Link to="/login/">
+					<Link to="/login">
 						<i className="material-icons" aria-hidden="true">
 							account_circle
 						</i>
