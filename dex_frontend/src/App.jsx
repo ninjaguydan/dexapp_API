@@ -8,6 +8,7 @@ import MenuBtn from "./Components/Buttons/MenuBtn"
 import UserMenuMobile from "./Components/Navigation/UserMenuMobile"
 import Login from "./Components/Pages/Login"
 import Home from "./Components/Pages/Home"
+import Register from "./Components/Pages/Register"
 
 function App() {
 	const [showSearchBar, setShowSearchBar] = useState(false)
@@ -32,6 +33,7 @@ function App() {
 				<Routes>
 					<Route exact path="/" element={<Home />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
 				</Routes>
 			</div>
 		</MyRouter>

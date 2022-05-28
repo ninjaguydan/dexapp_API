@@ -76,6 +76,9 @@ Button Styles
 /*==========================================================
 Form Styles
 ==========================================================*/
+.form-row {
+	position: relative;
+}
 .form-control:focus {
 	border-color: #e58494;
 	box-shadow: 0 0 0 0.25rem rgb(253 49 88 / 25%);
@@ -94,7 +97,7 @@ Form Styles
 	background-color: transparent;
 }
 
-/*Form Styles*/
+/*Search Form Styles*/
 .search-form {
 	display: flex;
 	z-index: 1;

@@ -4,24 +4,24 @@ import dex_icon_w from "../../media/dex-icon-w.svg"
 
 const UserMenuMobile = ({ menuIsOpen }) => {
 	return (
-		<div class={menuIsOpen ? "mobile-nav-slider" : "mobile-nav-slider hidden"}>
-			<img src={user_icon} alt="" class="user-img" />
-			<p class="bold">Daniel Thompson</p>
-			<p class="username">danboy</p>
+		<div className={menuIsOpen ? "mobile-nav-slider" : "mobile-nav-slider hidden"}>
+			<img src={user_icon} alt="" className="user-img" />
+			<p className="bold">Daniel Thompson</p>
+			<p className="username">danboy</p>
 
-			<div class="follow-cnt">
+			<div className="follow-cnt">
 				<p>
-					<span class="bold">10</span> Following
+					<span className="bold">10</span> Following
 				</p>
 				<p>
-					<span class="bold">9</span> Followers
+					<span className="bold">9</span> Followers
 				</p>
 			</div>
 			<nav>
 				<ul>
 					<li>
 						<a href="/">
-							<i class="material-icons">account_circle</i>Profile
+							<i className="material-icons">account_circle</i>Profile
 						</a>
 					</li>
 					<li>
@@ -31,7 +31,7 @@ const UserMenuMobile = ({ menuIsOpen }) => {
 					</li>
 					<li>
 						<a href="/">
-							<i class="material-icons">home</i>Home
+							<i className="material-icons">home</i>Home
 						</a>
 					</li>
 					<hr />

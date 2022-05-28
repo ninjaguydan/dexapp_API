@@ -3,7 +3,7 @@
 	width: 100%;
 	max-width: 500px;
 	margin: 2rem auto 0;
-	padding: 1rem;
+	padding: 1.5rem;
 	border-radius: 0.5rem;
 }
 .login-registration form .form-row {
@@ -34,6 +34,19 @@
 strong {
 	display: block;
 	margin: 1.5rem 0;
+}
+strong.error {
+	color: var(--brand-primary);
+	margin: 0.5rem 0;
+	font-size: 14px;
+	line-height: 1.25rem;
+}
+.success {
+	color: var(--brand-secondary);
+	position: absolute;
+	right: 0.5rem;
+	top: 1.85rem;
+	font-size: 1.25rem;
 }
 /*---------- 1080px BREAK POINT ----------*/
 @media only screen and (min-width: 1080px) {
