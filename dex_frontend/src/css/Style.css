@@ -1,7 +1,10 @@
 /*==========================================================
 0 - Global Styles
 ==========================================================*/
-* {
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
 	/* outline: 1px dotted magenta; */
 }
 a {
@@ -40,14 +43,14 @@ body {
 	background-color: var(--brand-gray2);
 }
 .app-container {
-	padding: 90px 15px 30px;
+	padding: 5.625rem 1rem 4.625rem;
 }
 .header1 {
 	font-size: 1.75rem;
 	font-weight: 500;
-	line-height: 1.25rem;
+	line-height: 2rem;
 }
-.header1.bold {
+.header1 span.bold {
 	color: var(--brand-secondary);
 }
 /*==========================================================
