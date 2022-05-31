@@ -1,7 +1,7 @@
 import React from "react"
 import { FaCheckCircle } from "react-icons/fa"
 
-const FormInput = ({ label, name, type = "text", value, handleChange, handleBlur, error }) => {
+const FormInput = ({ label, name, type = "text", value, handleChange, error }) => {
 	return (
 		<div className="form-row">
 			<label htmlFor={name}>{label}</label>
@@ -13,9 +13,6 @@ const FormInput = ({ label, name, type = "text", value, handleChange, handleBlur
 				value={value}
 				onChange={(e) => {
 					handleChange(e)
-				}}
-				onBlur={(e) => {
-					handleBlur(e)
 				}}
 			/>
 			{error && <strong className="error">{error}</strong>}
