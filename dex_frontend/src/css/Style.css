@@ -28,13 +28,13 @@ body {
 }
 .app-container {
 	padding: 5.625rem 1rem 4.625rem;
+	position: relative;
 }
 .bold {
 	font-weight: 700;
 }
 .card {
 	display: flex;
-	flex-wrap: wrap;
 	background-color: var(--brand-gray2);
 	padding: 1rem;
 	border-radius: 0.25rem;

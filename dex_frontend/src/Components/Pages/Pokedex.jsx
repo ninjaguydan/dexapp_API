@@ -20,7 +20,7 @@ const Pokedex = () => {
 			<h2 className="header1 title">Pokedex</h2>
 			<form className="filter-form">
 				<label htmlFor="gen">Generation</label>
-				<select id="gen" class="form-control-custom">
+				<select id="gen" className="form-control-custom">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -31,7 +31,7 @@ const Pokedex = () => {
 					<option>8</option>
 				</select>
 				<label htmlFor="type">Type</label>
-				<select id="type" class="form-control-custom">
+				<select id="type" className="form-control-custom">
 					<option>All</option>
 					<option>Fire</option>
 					<option>Water</option>

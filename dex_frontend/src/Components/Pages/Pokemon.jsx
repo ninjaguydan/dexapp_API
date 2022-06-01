@@ -11,7 +11,7 @@ const Pokemon = () => {
 			.then((response) => response.json())
 			.then((json) => setPokemon(json))
 			.catch((errors) => console.error(errors))
-	}, [])
+	}, [id])
 
 	return <div>{pokemon && <Profile pokemon={pokemon} />}</div>
 }
