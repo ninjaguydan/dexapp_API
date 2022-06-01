@@ -26,8 +26,36 @@ body {
 	--brand-gray3: #ced4da;
 	--brand-gray4: #6c757d;
 }
+.app-container {
+	padding: 5.625rem 1rem 4.625rem;
+}
 .bold {
 	font-weight: 700;
+}
+.card {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: var(--brand-gray2);
+	padding: 1rem;
+	border-radius: 0.25rem;
+}
+.header1 {
+	font-size: 1.75rem;
+	font-weight: 500;
+	line-height: 2rem;
+}
+.header1 span.bold {
+	color: var(--brand-secondary);
+}
+.header1.title {
+	text-align: center;
+	margin: 2rem;
+}
+.header2 {
+	text-align: center;
+	font-weight: 300;
+	line-height: 1.5rem;
+	margin: 1rem;
 }
 .sr-only {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -42,22 +70,12 @@ body {
 	border-radius: 50%;
 	background-color: var(--brand-gray2);
 }
-.app-container {
-	padding: 5.625rem 1rem 4.625rem;
-}
-.header1 {
-	font-size: 1.75rem;
-	font-weight: 500;
-	line-height: 2rem;
-}
-.header1 span.bold {
-	color: var(--brand-secondary);
-}
 /*==========================================================
 Button Styles
 ==========================================================*/
 .btn {
 	color: white;
+	padding: 0.25rem 1rem;
 }
 .btn.primary {
 	background-color: var(--brand-primary);
@@ -90,11 +108,14 @@ Form Styles
 	padding-left: 0;
 	background-color: transparent;
 	border: none;
-	border-bottom: 1px solid var(--fifth);
-	color: var(--fifth);
+	border-bottom: 1px solid var(--brand-gray3);
+	color: var(--brand-gray3);
+}
+select.form-control-custom option {
+	color: var(--brand-gray2);
 }
 .form-control-custom:focus {
-	color: var(--fifth);
+	/* color: var(--brand-gray3); */
 	box-shadow: none;
 	border-color: none;
 	background-color: transparent;

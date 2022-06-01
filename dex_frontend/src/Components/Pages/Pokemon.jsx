@@ -13,12 +13,7 @@ const Pokemon = () => {
 			.catch((errors) => console.error(errors))
 	}, [])
 
-	return (
-		<div>
-			{pokemon && <h1>This is the {pokemon.name} page</h1>}
-			<Profile pokemon={pokemon} />
-		</div>
-	)
+	return <div>{pokemon && <Profile pokemon={pokemon} />}</div>
 }
 
 export default Pokemon

@@ -10,6 +10,7 @@ import Login from "./Components/Pages/Login"
 import Home from "./Components/Pages/Home"
 import Register from "./Components/Pages/Register"
 import Pokemon from "./Components/Pages/Pokemon"
+import Pokedex from "./Components/Pages/Pokedex"
 
 function App() {
 	const [showSearchBar, setShowSearchBar] = useState(false)
@@ -35,6 +36,7 @@ function App() {
 					<Route exact path="/" element={<Home />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
+					<Route path="/dex" element={<Pokedex />} />
 					<Route path="/pokemon/:id" element={<Pokemon />} />
 				</Routes>
 			</div>
