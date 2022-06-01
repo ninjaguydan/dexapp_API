@@ -1,18 +1,32 @@
-import { useEffect } from "react"
 import default_img from "../media/0.png"
 import "../css/Pkmn_types.css"
 import { Link } from "react-router-dom"
 import { makeHundreds, getBaseStatTotal } from "../Helpers/Helpers"
 import { FaStar, FaHeart, FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import Spinner from "react-spinkit"
 
-const Profile = ({ pokemon }) => {
-	const stats = [pokemon.hp, pokemon.attack, pokemon.defense, pokemon.sp_attack, pokemon.sp_defense, pokemon.speed]
+const Profile = ({ pokemon, isLoading }) => {
+	if (isLoading) {
+		return <Spinner name="circle" className="loading" style={{ width: 50, height: 50 }} />
+	}
+
+	const stats = {
+		HP: pokemon.hp,
+		Attack: pokemon.attack,
+		Defense: pokemon.defense,
+		"Special Attack": pokemon.sp_attack,
+		"Special Defense": pokemon.sp_defense,
+		Speed: pokemon.speed,
+	}
 
 	let prev
 	let next
 	pokemon.id === 1 ? (prev = 898) : (prev = pokemon.id - 1)
 	pokemon.id === 898 ? (next = 1) : (next = pokemon.id + 1)
 
+	function grabImage(num) {
+		return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png`
+	}
 	function setImage(event) {
 		event.target.src = default_img
 	}
@@ -43,32 +57,16 @@ const Profile = ({ pokemon }) => {
 			</li>
 			<li className="list-group-item striped">
 				<h3 className="bold">Base Stat Total</h3>
-				<p>{getBaseStatTotal(stats)}</p>
+				<p>{getBaseStatTotal(Object.values(stats))}</p>
 			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">HP</h3>
-				<p>{pokemon.hp}</p>
-			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">Attack</h3>
-				<p>{pokemon.attack}</p>
-			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">Defense</h3>
-				<p>{pokemon.defense}</p>
-			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">Special Attack</h3>
-				<p>{pokemon.sp_attack}</p>
-			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">Special Defense</h3>
-				<p>{pokemon.defense}</p>
-			</li>
-			<li className="list-group-item striped">
-				<h3 className="bold">Speed</h3>
-				<p>{pokemon.speed}</p>
-			</li>
+			{Object.keys(stats).map((stat) => {
+				return (
+					<li className="list-group-item striped" key={stat}>
+						<h3 className="bold">{stat}</h3>
+						<p>{stats[stat]}</p>
+					</li>
+				)
+			})}
 			<li className="list-group-item striped">
 				<h3 className="bold">Reviews</h3>
 				<p>00</p>
@@ -77,9 +75,7 @@ const Profile = ({ pokemon }) => {
 				<p className="bold">Featured on 0 Teams!</p>
 			</li>
 			<li className="list-group-item striped">
-				<button className="btn secondary">
-					<FaHeart /> Add to Team
-				</button>
+				<button className="btn secondary">Add to Team</button>
 				<button className="btn secondary">
 					<FaStar /> Favorite
 				</button>
@@ -88,7 +84,7 @@ const Profile = ({ pokemon }) => {
 				<Link to={`/pokemon/${prev}`} className="pokenav">
 					<FaArrowLeft />
 					<img
-						src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prev}.png`}
+						src={grabImage(prev)}
 						onError={(e) => {
 							setImage(e)
 						}}
@@ -96,7 +92,7 @@ const Profile = ({ pokemon }) => {
 				</Link>
 				<Link to={`/pokemon/${next}`} className="pokenav">
 					<img
-						src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${next}.png`}
+						src={grabImage(next)}
 						onError={(e) => {
 							setImage(e)
 						}}

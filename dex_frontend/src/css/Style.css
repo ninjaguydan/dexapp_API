@@ -38,6 +38,7 @@ body {
 	background-color: var(--brand-gray2);
 	padding: 1rem;
 	border-radius: 0.25rem;
+	border: 1px solid rgb(255 255 255 / 13%);
 }
 .header1 {
 	font-size: 1.75rem;
@@ -56,6 +57,10 @@ body {
 	font-weight: 300;
 	line-height: 1.5rem;
 	margin: 1rem;
+}
+.sk-spinner.loading {
+	color: var(--brand-gray4);
+	margin: 3rem auto;
 }
 .sr-only {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -250,6 +255,9 @@ Header Styles
 }
 /*---------- 1080px BREAK POINT ----------*/
 @media only screen and (min-width: 1080px) {
+	.app-container {
+		padding-top: 6.25rem;
+	}
 	.site-header .header-logo {
 		background: url("../media/dex-logo-w.svg") no-repeat center center;
 		background-size: contain;

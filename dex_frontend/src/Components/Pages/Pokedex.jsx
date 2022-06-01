@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Results from "../Results"
+import Spinner from "react-spinkit"
 
 const Pokedex = () => {
 	const [results, setResults] = useState([])
@@ -21,6 +22,7 @@ const Pokedex = () => {
 			<form className="filter-form">
 				<label htmlFor="gen">Generation</label>
 				<select id="gen" className="form-control-custom">
+					<option>All</option>
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -43,7 +45,7 @@ const Pokedex = () => {
 				</select>
 				<button className="btn secondary">Filter</button>
 			</form>
-			{isFetching ? <strong className="loading">Loading...</strong> : <Results results={results} />}
+			{isFetching ? <Spinner name="circle" className="loading" style={{ width: 50, height: 50 }} /> : <Results results={results} />}
 		</>
 	)
 }

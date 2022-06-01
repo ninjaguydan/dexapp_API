@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter as MyRouter } from "react-router-dom"
 import Header from "./Components/Header"
 import MobileNav from "./Components/Navigation/MobileNav"
 import SearchBtn from "./Components/Buttons/SearchBtn"
-import SearchBar from "./Components/SearchBar"
+import SearchBar from "./Components/Forms/SearchBar"
 import MenuBtn from "./Components/Buttons/MenuBtn"
 import UserMenuMobile from "./Components/Navigation/UserMenuMobile"
 import Login from "./Components/Pages/Login"
@@ -19,16 +19,13 @@ function App() {
 	const toggleSearch = () => {
 		setShowSearchBar(!showSearchBar)
 	}
-	const openMenu = () => {
-		setMenuIsOpen(!menuIsOpen)
-	}
 	const searchBtn = <SearchBtn toggleSearch={toggleSearch} />
 
 	return (
 		<MyRouter>
 			<Header searchBtn={searchBtn} />
 			<SearchBar showSearchBar={showSearchBar} />
-			<MenuBtn openMenu={openMenu} menuIsOpen={menuIsOpen} />
+			<MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />
 			<UserMenuMobile menuIsOpen={menuIsOpen} />
 			<MobileNav searchBtn={searchBtn} />
 			<div className="app-container">
