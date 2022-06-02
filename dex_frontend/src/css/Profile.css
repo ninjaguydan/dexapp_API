@@ -149,6 +149,10 @@ Post Column Styles
 	background-color: var(--brand-gray1);
 	border-radius: 50%;
 	margin-right: 1rem;
+	display: none;
+}
+.post-column .card .content {
+	width: calc(100% - 50px);
 }
 .post-column .card h4 {
 	font-weight: 700;
@@ -182,15 +186,20 @@ Post Column Styles
 	font-size: 12px;
 }
 .post-column .card .icon-container {
-	margin-left: auto;
+	width: 2rem;
+	margin-left: 1rem;
 	display: flex;
 	flex-direction: column;
 }
 .post-column .card .icon-container button.fav {
 	background-color: unset;
-	color: var(--brand-gray3);
+	color: gray;
 	margin-bottom: 1rem;
 	transition: transform 0.2s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 12px;
 }
 .post-column .card .icon-container button.fav:hover,
 .post-column .card .icon-container button.fav:focus {
@@ -198,8 +207,21 @@ Post Column Styles
 	transform: scale(1.1625);
 	outline: none;
 }
+.post-column .card .icon-container button.fav svg {
+	width: 12px;
+	margin-bottom: 5px;
+}
 .post-column .card div:last-child {
 	flex-basis: 100%;
+}
+/*---------- 530px BREAK POINT ----------*/
+@media only screen and (min-width: 530px) {
+	.post-column .card .content {
+		width: calc(100% - 124px);
+	}
+	.post-column .card img {
+		display: block;
+	}
 }
 /*---------- 946px BREAK POINT ----------*/
 @media only screen and (min-width: 946px) {
@@ -223,4 +245,56 @@ Reply Styles
 .replies .card img {
 	width: 40px;
 	height: 40px;
+}
+.post-column .replies .card form {
+	justify-content: end;
+}
+.post-column .replies .card form .counter {
+	right: 165px;
+}
+/*---------- 530px BREAK POINT ----------*/
+@media only screen and (min-width: 530px) {
+	.post-column .replies .card .content {
+		width: calc(100% - 106px);
+	}
+}
+/*==========================================================
+Post Form Styles
+==========================================================*/
+.post-column .card form {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.post-column .card textarea {
+	color: var(--brand-gray3);
+}
+.post-column .card select {
+	margin-top: 1rem;
+	width: 3rem;
+}
+.post-column .card form .btn {
+	margin-top: 1rem;
+	padding: 0.25rem 2rem;
+	width: 7rem;
+}
+.post-column .card form .counter {
+	position: absolute;
+	font-size: 12px;
+	color: gray;
+	bottom: 25px;
+	right: 145px;
+}
+.post-column .card form .counter.caution {
+	color: orange;
+}
+.post-column .card form .counter.error {
+	color: var(--brand-primary);
+}
+/*---------- 530px BREAK POINT ----------*/
+@media only screen and (min-width: 530px) {
+	.post-column .card form {
+		width: calc(100% - 76px);
+	}
 }

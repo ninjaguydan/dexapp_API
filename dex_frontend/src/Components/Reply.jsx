@@ -26,7 +26,7 @@ function Reply({ reply }) {
 	return (
 		<div className="card">
 			<img src={dfault} />
-			<div>
+			<div className="content">
 				<h4>
 					<Link to={`/profile/${""}`}>{user.name}</Link>
 					<span> {user.username}</span>
@@ -36,7 +36,7 @@ function Reply({ reply }) {
 			</div>
 			<div className="icon-container">
 				<button className="fav">
-					<FaRegHeart />
+					<FaRegHeart /> 999
 				</button>
 			</div>
 		</div>

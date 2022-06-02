@@ -3,13 +3,8 @@ import "../css/Pkmn_types.css"
 import { Link } from "react-router-dom"
 import { makeHundreds, getBaseStatTotal } from "../Helpers/Helpers"
 import { FaStar, FaHeart, FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import Loading from "./Loader/Loading"
 
-const Profile = ({ pokemon, isLoading }) => {
-	if (isLoading) {
-		return <Loading />
-	}
-
+const Profile = ({ pokemon }) => {
 	const stats = {
 		HP: pokemon.hp,
 		Attack: pokemon.attack,

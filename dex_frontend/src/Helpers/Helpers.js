@@ -23,6 +23,10 @@ export function renderStars(num) {
 	}
 	return result
 }
+export function titleCase(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 function getSeconds(milliseconds) {
 	return milliseconds / 1000
 }
@@ -49,20 +53,28 @@ export function getTimeDifference(date) {
 	let now = new Date()
 	let time = new Date(date)
 	let milli = now - time
+	let roundDown = Math.floor
+	let years = getYears(milli)
+	let months = getMonths(milli)
+	let weeks = getWeeks(milli)
+	let days = getDays(milli)
+	let hours = getHours(milli)
+	let min = getMinutes(milli)
+	let sec = getSeconds(milli)
 
-	if (Math.floor(getYears(milli)) > 0) {
-		return `${Math.floor(getYears(milli))}y`
-	} else if (Math.floor(getMonths(milli)) > 0) {
-		return `${Math.floor(getMonths(milli))}mo`
-	} else if (Math.floor(getWeeks(milli)) > 0) {
-		return `${Math.floor(getWeeks(milli))}wks`
-	} else if (Math.floor(getDays(milli)) > 0) {
-		return `${Math.floor(getDays(milli))}d`
-	} else if (Math.floor(getHours(milli)) > 0) {
-		return `${Math.floor(getHours(milli))}h`
-	} else if (Math.floor(getMinutes(milli)) > 0) {
-		return `${Math.floor(getMinutes(milli))}m`
+	if (roundDown(years) > 0) {
+		return `${roundDown(years)}y`
+	} else if (roundDown(months) > 0) {
+		return `${roundDown(months)}mo`
+	} else if (roundDown(weeks) > 0) {
+		return `${roundDown(weeks)}w`
+	} else if (roundDown(days) > 0) {
+		return `${roundDown(days)}d`
+	} else if (roundDown(hours) > 0) {
+		return `${roundDown(hours)}h`
+	} else if (roundDown(min) > 0) {
+		return `${roundDown(min)}m`
 	} else {
-		return `${Math.floor(getSeconds(milli))}s`
+		return `${roundDown(sec)}s`
 	}
 }

@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import ReplyList from "./ReplyList"
 import Loading from "./Loader/Loading"
 import dfault from "../media/0.png"
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import { getTimeDifference } from "../Helpers/Helpers"
+import { replies as repliesJSON } from "../fake_data/replies"
 
 const Review = ({ review }) => {
 	const [user, setUser] = useState({})
 	const [isLoading, setIsLoading] = useState(true)
 	const [repliesVisible, setRepliesVisible] = useState(false)
+	const [replies, setReplies] = useState([])
 	const arr = [...Array(10).keys()]
 
 	useEffect(() => {
@@ -20,15 +22,20 @@ const Review = ({ review }) => {
 				setIsLoading(false)
 			})
 			.catch((errors) => console.error(errors))
-	}, [])
+	}, [review.added_by])
+
+	useEffect(() => {
+		setReplies(repliesJSON.filter((reply) => reply.post === review.id))
+	}, [review.id])
 
 	if (isLoading) {
 		return <Loading />
 	}
+
 	return (
 		<div className="card">
-			<img src={dfault} />
-			<div>
+			<img src={dfault} alt={""} />
+			<div className="content">
 				<h4>
 					<Link to={`/profile/${""}`}>{user.name}</Link>
 					<span> {user.username}</span>
@@ -47,7 +54,7 @@ const Review = ({ review }) => {
 			</div>
 			<div className="icon-container">
 				<button className="fav">
-					<FaRegHeart />
+					<FaRegHeart /> 000
 				</button>
 				<button
 					className="fav"
@@ -55,10 +62,10 @@ const Review = ({ review }) => {
 						setRepliesVisible(!repliesVisible)
 					}}
 				>
-					<FaRegCommentAlt />
+					<FaRegCommentAlt /> {replies.length}
 				</button>
 			</div>
-			<div className="replies">{repliesVisible && <ReplyList postId={review.id} />}</div>
+			<div className="replies">{repliesVisible && <ReplyList replies={replies} user={user.username} />}</div>
 		</div>
 	)
 }
