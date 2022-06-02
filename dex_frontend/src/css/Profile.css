@@ -141,6 +141,7 @@ Post Column Styles
 }
 .post-column .card {
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 .post-column .card img {
 	width: 60px;
@@ -197,9 +198,29 @@ Post Column Styles
 	transform: scale(1.1625);
 	outline: none;
 }
+.post-column .card div:last-child {
+	flex-basis: 100%;
+}
 /*---------- 946px BREAK POINT ----------*/
 @media only screen and (min-width: 946px) {
 	.post-column {
 		max-width: 650px;
 	}
+}
+/*==========================================================
+Reply Styles
+==========================================================*/
+.replies {
+	margin-top: 1rem;
+}
+.replies .card {
+	flex-wrap: nowrap;
+	background-color: #303030;
+}
+.replies .card div:last-child {
+	flex-basis: unset;
+}
+.replies .card img {
+	width: 40px;
+	height: 40px;
 }

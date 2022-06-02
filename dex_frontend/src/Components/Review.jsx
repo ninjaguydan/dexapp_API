@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Spinner from "react-spinkit"
 import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
+import ReplyList from "./ReplyList"
+import Loading from "./Loader/Loading"
 import dfault from "../media/0.png"
 import { getTimeDifference } from "../Helpers/Helpers"
 
 const Review = ({ review }) => {
 	const [user, setUser] = useState({})
 	const [isLoading, setIsLoading] = useState(true)
+	const [repliesVisible, setRepliesVisible] = useState(false)
 	const arr = [...Array(10).keys()]
 
 	useEffect(() => {
@@ -21,9 +23,8 @@ const Review = ({ review }) => {
 	}, [])
 
 	if (isLoading) {
-		return <Spinner name="circle" className="loading" style={{ width: 50, height: 50 }} />
+		return <Loading />
 	}
-
 	return (
 		<div className="card">
 			<img src={dfault} />
@@ -48,10 +49,16 @@ const Review = ({ review }) => {
 				<button className="fav">
 					<FaRegHeart />
 				</button>
-				<button className="fav">
+				<button
+					className="fav"
+					onClick={() => {
+						setRepliesVisible(!repliesVisible)
+					}}
+				>
 					<FaRegCommentAlt />
 				</button>
 			</div>
+			<div className="replies">{repliesVisible && <ReplyList postId={review.id} />}</div>
 		</div>
 	)
 }

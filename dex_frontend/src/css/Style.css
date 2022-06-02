@@ -58,9 +58,12 @@ body {
 	line-height: 1.5rem;
 	margin: 1rem;
 }
-.sk-spinner.loading {
-	color: var(--brand-gray4);
+.loading {
 	margin: 3rem auto;
+}
+.sk-circle.sk-spinner {
+	color: var(--brand-gray4);
+	margin: auto;
 }
 .sr-only {
 	clip: rect(1px, 1px, 1px, 1px);

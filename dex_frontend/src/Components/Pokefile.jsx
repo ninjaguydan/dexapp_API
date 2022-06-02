@@ -3,11 +3,11 @@ import "../css/Pkmn_types.css"
 import { Link } from "react-router-dom"
 import { makeHundreds, getBaseStatTotal } from "../Helpers/Helpers"
 import { FaStar, FaHeart, FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import Spinner from "react-spinkit"
+import Loading from "./Loader/Loading"
 
 const Profile = ({ pokemon, isLoading }) => {
 	if (isLoading) {
-		return <Spinner name="circle" className="loading" style={{ width: 50, height: 50 }} />
+		return <Loading />
 	}
 
 	const stats = {
