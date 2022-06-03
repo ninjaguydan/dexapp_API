@@ -1,8 +1,8 @@
 import React from "react"
 
-const Search = ({ showSearchBar }) => {
+const Search = () => {
 	return (
-		<form action="/search/" role="search" className={showSearchBar ? "search-form" : "search-form hidden"}>
+		<form action="/search/" role="search" className="search-form">
 			<select name="filter">
 				<option value="pokemon">Pokemon</option>
 				<option value="people">People</option>

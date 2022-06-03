@@ -2,9 +2,9 @@ import React from "react"
 import user_icon from "../../media/0.png"
 import dex_icon_w from "../../media/dex-icon-w.svg"
 
-const UserMenuMobile = ({ menuIsOpen }) => {
+const UserMenuMobile = () => {
 	return (
-		<div className={menuIsOpen ? "mobile-nav-slider" : "mobile-nav-slider hidden"}>
+		<div className="mobile-nav-slider">
 			<img src={user_icon} alt="" className="user-img" />
 			<p className="bold">Daniel Thompson</p>
 			<p className="username">danboy</p>

@@ -8,6 +8,7 @@ Global Styles
 	max-width: 1080px;
 	margin: 0 auto;
 }
+/*---------- 946px BREAK POINT ----------*/
 @media only screen and (min-width: 946px) {
 	.profile {
 		gap: 1rem;

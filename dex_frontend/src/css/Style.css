@@ -30,7 +30,8 @@ body {
 	padding: 5.625rem 1rem 5.625rem;
 	position: relative;
 }
-.bold {
+.bold,
+.header1.bold {
 	font-weight: 700;
 }
 .card {

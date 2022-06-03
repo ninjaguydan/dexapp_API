@@ -1,9 +1,12 @@
-import React from "react"
+import "../../css/Home.css"
+import TopTenList from "../TopTenList"
+import Timeline from "../Timeline"
 
 const Home = () => {
 	return (
-		<div>
-			<h1>THIS IS THE HOME PAGE</h1>
+		<div className="profile main">
+			<TopTenList />
+			<Timeline />
 		</div>
 	)
 }
