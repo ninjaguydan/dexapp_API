@@ -1,32 +1,31 @@
-import ReplyList from "./ReplyList"
-import Loading from "./Loader/Loading"
-import dfault from "../media/0.png"
-import { useEffect, useState } from "react"
+import dfault from "../../../media/0.png"
+import ReplyList from "../../ReplyList"
+import Loading from "../../Loader/Loading"
 import { Link } from "react-router-dom"
-import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
-import { getTimeDifference } from "../Helpers/Helpers"
-import { replies as repliesJSON } from "../fake_data/replies"
+import { getTimeDifference } from "../../../Helpers/Helpers"
+import { useEffect, useState } from "react"
+import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
+import { replies as repliesJSON } from "../../../Data/replies"
 
-const Review = ({ review }) => {
-	const [user, setUser] = useState({})
+function Post({ post }) {
 	const [isLoading, setIsLoading] = useState(true)
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const [replies, setReplies] = useState([])
-	const arr = [...Array(10).keys()]
+	const [user, setUser] = useState({})
 
 	useEffect(() => {
-		fetch(`http://localhost:8000/api/users/${review.added_by}`)
+		fetch(`http://localhost:8000/api/users/${post.added_by}`)
 			.then((response) => response.json())
 			.then((json) => {
 				setUser(json)
 				setIsLoading(false)
 			})
 			.catch((errors) => console.error(errors))
-	}, [review.added_by])
+	}, [post.added_by])
 
 	useEffect(() => {
-		setReplies(repliesJSON.filter((reply) => reply.post === review.id))
-	}, [review.id])
+		setReplies(repliesJSON.filter((reply) => reply.post === post.id))
+	}, [post.id])
 
 	if (isLoading) {
 		return <Loading />
@@ -39,22 +38,13 @@ const Review = ({ review }) => {
 				<h4>
 					<Link to={`/profile/${""}`}>{user.name}</Link>
 					<span> {user.username}</span>
-					<span className="date"> &#8226; {getTimeDifference(review.created)}</span>
+					<span className="date"> &#8226; {getTimeDifference(post.created)}</span>
 				</h4>
-				<span className="rating">
-					{arr.map((value, index) => {
-						if (review.rating < index + 1) {
-							return <FaRegStar key={index} />
-						} else {
-							return <FaStar key={index} />
-						}
-					})}
-				</span>
-				<p>{review.content}</p>
+				<p>{post.content}</p>
 			</div>
 			<div className="icon-container">
 				<button className="fav">
-					<FaRegHeart /> 000
+					<FaRegHeart /> 0
 				</button>
 				<button
 					className="fav"
@@ -70,4 +60,4 @@ const Review = ({ review }) => {
 	)
 }
 
-export default Review
+export default Post

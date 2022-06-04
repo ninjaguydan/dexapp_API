@@ -6,11 +6,11 @@ import SearchBtn from "./Components/Buttons/SearchBtn"
 import SearchBar from "./Components/Forms/SearchBar"
 import MenuBtn from "./Components/Buttons/MenuBtn"
 import UserMenuMobile from "./Components/Navigation/UserMenuMobile"
-import Login from "./Components/Pages/Login"
-import Home from "./Components/Pages/Home"
-import Register from "./Components/Pages/Register"
-import Pokemon from "./Components/Pages/Pokemon"
-import Pokedex from "./Components/Pages/Pokedex"
+import Login from "./Components/Pages/Login/Login"
+import Home from "./Components/Pages/Home/Home"
+import Register from "./Components/Pages/Login/Register"
+import Pokemon from "./Components/Pages/Pokemon/Pokemon"
+import Pokedex from "./Components/Pages/Search/Pokedex"
 
 function App() {
 	const [showSearchBar, setShowSearchBar] = useState(false)

@@ -1,7 +1,7 @@
-import default_img from "../media/0.png"
-import "../css/Pkmn_types.css"
+import default_img from "../../../media/0.png"
+import "../../../css/Pkmn_types.css"
 import { Link } from "react-router-dom"
-import { makeHundreds, getBaseStatTotal } from "../Helpers/Helpers"
+import { makeHundreds, getBaseStatTotal } from "../../../Helpers/Helpers"
 import { FaStar, FaHeart, FaArrowLeft, FaArrowRight } from "react-icons/fa"
 
 const Profile = ({ pokemon }) => {

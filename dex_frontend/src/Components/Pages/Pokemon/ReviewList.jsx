@@ -1,4 +1,4 @@
-import Review from "./Review"
+import Review from "../Pokemon/Review"
 
 function ReviewList({ reviews }) {
 	if (reviews.length === 0) {

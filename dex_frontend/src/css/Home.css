@@ -143,3 +143,39 @@ Timeline Styles
 .profile.main .post-column.main form {
 	justify-content: end;
 }
+.card .content.team {
+	width: calc(100% - 50px);
+}
+
+.card .content.team .team-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+.card .content.team .team-container img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	background-color: #444444;
+	transition: transform 0.2s;
+}
+.card .content.team .team-container img:hover {
+	transform: scale(1.1625);
+}
+/*---------- 600px BREAK POINT ----------*/
+@media only screen and (min-width: 600px) {
+	.card .content.team .team-container img {
+		width: 70px;
+		height: 70px;
+	}
+	.card .content.team .team-container {
+		grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+	}
+}
+/*---------- 1080px BREAK POINT ----------*/
+@media only screen and (min-width: 1080px) {
+	.card .content.team .team-container {
+		grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+	}
+}

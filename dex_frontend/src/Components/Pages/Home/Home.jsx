@@ -1,6 +1,6 @@
-import "../../css/Home.css"
-import TopTenList from "../TopTenList"
-import Timeline from "../Timeline"
+import "../../../css/Home.css"
+import TopTenList from "./TopTenList"
+import Timeline from "./Timeline"
 
 const Home = () => {
 	return (

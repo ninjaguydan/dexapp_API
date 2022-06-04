@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import pkmn_img from "../../media/pkmn.png"
+import pkmn_img from "../../../media/pkmn.png"
 
 const Login = () => {
 	return (

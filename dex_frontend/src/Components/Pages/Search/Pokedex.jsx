@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Results from "../Results"
+import Results from "./Results"
 
 const Pokedex = () => {
 	const [results, setResults] = useState([])

@@ -1,5 +1,5 @@
-import ResultCard from "./Buttons/ResultCard"
-import Loading from "../Components/Loader/Loading"
+import ResultCard from "../../Buttons/ResultCard"
+import Loading from "../../Loader/Loading"
 
 const Results = ({ results, isLoading }) => {
 	if (isLoading) {

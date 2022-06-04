@@ -158,6 +158,7 @@ Post Column Styles
 .post-column .card h4 {
 	font-weight: 700;
 	margin-bottom: 0.75rem;
+	line-height: 1.5rem;
 }
 .post-column .card h4 a:hover {
 	color: inherit;
@@ -202,6 +203,9 @@ Post Column Styles
 	align-items: center;
 	font-size: 12px;
 }
+.post-column .card .icon-container button.fav:last-child {
+	margin-bottom: 0;
+}
 .post-column .card .icon-container button.fav:hover,
 .post-column .card .icon-container button.fav:focus {
 	color: var(--brand-secondary);
@@ -233,7 +237,7 @@ Post Column Styles
 /*==========================================================
 Reply Styles
 ==========================================================*/
-.replies {
+.replies .card:first-child {
 	margin-top: 1rem;
 }
 .replies .card {

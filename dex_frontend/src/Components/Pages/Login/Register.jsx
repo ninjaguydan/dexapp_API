@@ -1,8 +1,8 @@
-import FormInput from "../Forms/FormInput"
+import FormInput from "../../Forms/FormInput"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { validator, checkIfValues, checkIfEmpty } from "../../Helpers/Validator"
-import pk_ball from "../../media/pokeball.png"
+import { validator, checkIfValues, checkIfEmpty } from "../../../Helpers/Validator"
+import pk_ball from "../../../media/pokeball.png"
 
 const Register = () => {
 	const [values, setValues] = useState({

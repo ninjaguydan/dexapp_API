@@ -36,7 +36,7 @@ function Reply({ reply }) {
 			</div>
 			<div className="icon-container">
 				<button className="fav">
-					<FaRegHeart /> 999
+					<FaRegHeart /> 0
 				</button>
 			</div>
 		</div>

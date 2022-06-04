@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Pokefile from "../Pokefile"
-import ReviewList from "../ReviewList"
-import PostForm from "../Forms/PostForm"
-import { reviews as reviewsJSON } from "../../fake_data/reviews"
-import { titleCase } from "../../Helpers/Helpers"
-import Loading from "../Loader/Loading"
+import Pokefile from "../../Pages/Pokemon/Pokefile"
+import ReviewList from "./ReviewList"
+import PostForm from "../../Forms/PostForm"
+import { reviews as reviewsJSON } from "../../../Data/reviews"
+import { titleCase } from "../../../Helpers/Helpers"
+import Loading from "../../Loader/Loading"
 
 const Pokemon = () => {
 	const { id } = useParams()
