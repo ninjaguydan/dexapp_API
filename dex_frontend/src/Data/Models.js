@@ -4,7 +4,7 @@ const user = {
 	id: uuidv4(),
 	name: "",
 	username: "",
-	email: "",
+	password: "",
 	created: "",
 	user_img: "/default/0.png",
 	bg_color: "",

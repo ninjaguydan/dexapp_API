@@ -1,31 +1,15 @@
-import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import Loading from "./Loader/Loading"
-import dfault from "../media/0.png"
+import { useSelector } from "react-redux"
 import { FaRegHeart } from "react-icons/fa"
 import { getTimeDifference } from "../Helpers/Helpers"
+import UserIcon from "./Navigation/UserIcon"
 
 function Reply({ reply }) {
-	const [isLoading, setIsLoading] = useState(true)
-	const [user, setUser] = useState({})
-
-	useEffect(() => {
-		fetch(`http://localhost:8000/api/users/${reply.added_by}`)
-			.then((response) => response.json())
-			.then((json) => {
-				setUser(json)
-				setIsLoading(false)
-			})
-			.catch((errors) => console.error(errors))
-	}, [])
-
-	if (isLoading) {
-		return <Loading />
-	}
+	let user = useSelector((state) => state.users.filter((user) => user.id === reply.added_by)[0])
 
 	return (
 		<div className="card">
-			<img src={dfault} />
+			<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} />
 			<div className="content">
 				<h4>
 					<Link to={`/profile/${""}`}>{user.name}</Link>

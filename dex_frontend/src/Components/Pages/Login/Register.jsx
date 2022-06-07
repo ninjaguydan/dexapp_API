@@ -1,4 +1,5 @@
 import FormInput from "../../Forms/FormInput"
+import { user } from "../../../Data/Models"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { validator, checkIfValues, checkIfEmpty } from "../../../Helpers/Validator"
@@ -8,7 +9,6 @@ const Register = () => {
 	const [values, setValues] = useState({
 		name: "",
 		username: "",
-		email: "",
 		password: "",
 		confirm: "",
 	})
@@ -20,8 +20,7 @@ const Register = () => {
 	useEffect(() => {
 		setErrors({ ...errors, ...validator(values) })
 	}, [values])
-	console.log(values)
-	console.log(errors)
+
 	return (
 		<div className="log-res-wrapper">
 			<div className="login-registration">
@@ -30,7 +29,6 @@ const Register = () => {
 				<form>
 					<FormInput label="Name" name="name" value={values.name} handleChange={handleChange} error={errors.name} />
 					<FormInput label="Username" name="username" value={values.username} handleChange={handleChange} error={errors.username} />
-					<FormInput label="Email" name="email" type="email" value={values.email} handleChange={handleChange} error={errors.email} />
 					<FormInput
 						label="Password"
 						name="password"

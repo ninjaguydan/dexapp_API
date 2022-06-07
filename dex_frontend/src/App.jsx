@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
-import { Routes, Route, BrowserRouter as MyRouter } from "react-router-dom"
-import Header from "./Components/Header"
+import { Routes, Route, BrowserRouter as MyRouter, Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+// Comps
+import Header from "./Components/Navigation/Header"
 import MobileNav from "./Components/Navigation/MobileNav"
 import SearchBtn from "./Components/Buttons/SearchBtn"
 import SearchBar from "./Components/Forms/SearchBar"
@@ -13,16 +15,19 @@ import Pokemon from "./Components/Pages/Pokemon/Pokemon"
 import Pokedex from "./Components/Pages/Search/Pokedex"
 
 function App() {
+	const loggedUser = useSelector((state) => state.loggedUser)
 	const [showSearchBar, setShowSearchBar] = useState(false)
 	const [menuIsOpen, setMenuIsOpen] = useState(false)
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
+
+	console.log(loggedUser)
 
 	return (
 		<MyRouter>
 			<Header searchBtn={searchBtn} />
 			{showSearchBar && <SearchBar />}
-			<MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />
-			{menuIsOpen && <UserMenuMobile />}
+			{loggedUser && <MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />}
+			{menuIsOpen && <UserMenuMobile user={loggedUser} />}
 			<MobileNav searchBtn={searchBtn} />
 			<div className="app-container">
 				<Routes>
@@ -31,6 +36,7 @@ function App() {
 					<Route path="/register" element={<Register />} />
 					<Route path="/dex" element={<Pokedex />} />
 					<Route path="/pokemon/:id" element={<Pokemon />} />
+					<Route path="/profile/:username" element={""} />
 				</Routes>
 			</div>
 		</MyRouter>

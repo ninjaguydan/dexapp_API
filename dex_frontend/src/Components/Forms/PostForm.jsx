@@ -1,6 +1,8 @@
 import dfault from "../../media/0.png"
 import { useState, useEffect } from "react"
 import { v4 as uuidv4 } from "uuid"
+import { useSelector } from "react-redux"
+import getImageByKey from "../../Helpers/getImageByKey"
 
 const empty = {
 	id: uuidv4(),
@@ -11,6 +13,7 @@ const empty = {
 function PostForm({ review = false, btnText, placeholder }) {
 	const [counter, setCounter] = useState(0)
 	const [formData, setFormData] = useState(empty)
+	const loggedUser = useSelector((state) => state.loggedUser)
 
 	function setValue(event) {
 		setFormData({ ...formData, [event.target.id]: event.target.value })
@@ -29,7 +32,7 @@ function PostForm({ review = false, btnText, placeholder }) {
 
 	return (
 		<div className="card">
-			<img src={dfault} alt={"user"} />
+			<img src={getImageByKey(loggedUser.user_img)} alt={"user"} className={loggedUser.bg_color} />
 			<form>
 				<textarea
 					onChange={(e) => setValue(e)}

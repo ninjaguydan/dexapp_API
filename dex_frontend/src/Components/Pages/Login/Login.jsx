@@ -1,22 +1,36 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import pkmn_img from "../../../media/pkmn.png"
+import FormInput from "../../Forms/FormInput"
+import { useDispatch } from "react-redux"
 
 const Login = () => {
+	const dispatch = useDispatch()
+	const [creds, setCreds] = useState({
+		username: "",
+		password: "",
+	})
+	const [error, setError] = useState(false)
+	const handleChange = (event) => {
+		setCreds({ ...creds, [event.target.id]: event.target.value })
+	}
+	function onSubmit(event) {
+		event.preventDefault()
+		dispatch({
+			type: "users/ON_LOGIN",
+			creds,
+		})
+	}
+
 	return (
 		<div className="log-res-wrapper">
 			<div className="login-registration">
 				<h2 className="header1">Login</h2>
 				<hr />
-				<strong>Email or password does not match our records</strong>
-				<form>
-					<div className="form-row">
-						<label htmlFor="email">Email</label>
-						<input type="email" id="email" className="form-control" />
-					</div>
-					<div className="form-row">
-						<label htmlFor="password">Password</label>
-						<input type="password" id="password" className="form-control" />
-					</div>
+				{error && <strong className="error">Email or password does not match our records</strong>}
+				<form onSubmit={(e) => onSubmit(e)}>
+					<FormInput label="Username" name="username" value={creds.username} handleChange={handleChange} />
+					<FormInput label="Password" name="password" value={creds.password} handleChange={handleChange} type="password" />
 					<div className="btn-container">
 						<button className="btn primary">Log In</button>
 						<Link to="/register" className="btn secondary">

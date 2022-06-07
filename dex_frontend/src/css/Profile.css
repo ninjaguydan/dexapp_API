@@ -303,3 +303,24 @@ Post Form Styles
 		width: calc(100% - 76px);
 	}
 }
+/*==========================================================
+BACKGROUND COLORS
+==========================================================*/
+.gray {
+	background-color: var(--brand-gray1) !important;
+}
+.red {
+	background-color: var(--brand-primary) !important;
+}
+.blue {
+	background-color: var(--brand-secondary) !important;
+}
+.yellow {
+	background-color: yellow !important;
+}
+.green {
+	background-color: green !important;
+}
+.purple {
+	background-color: rgb(127, 47, 184) !important;
+}

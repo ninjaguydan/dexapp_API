@@ -1,7 +1,7 @@
 import React from "react"
 import { FaCheckCircle } from "react-icons/fa"
 
-const FormInput = ({ label, name, type = "text", value, handleChange, error }) => {
+const FormInput = ({ label, name, type = "text", value, handleChange, error = false }) => {
 	return (
 		<div className="form-row">
 			<label htmlFor={name}>{label}</label>

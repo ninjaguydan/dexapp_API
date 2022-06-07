@@ -1,9 +1,9 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 
-// const activeStyle = {
-// 	color: "#009df1",
-// }
+const activeStyle = {
+	color: "#009df1",
+}
 
 const DesktopNav = ({ searchBtn }) => {
 	return (
@@ -11,7 +11,9 @@ const DesktopNav = ({ searchBtn }) => {
 			<ul className="main-nav">
 				<li>{searchBtn}</li>
 				<li>
-					<NavLink to="/">Home</NavLink>
+					<NavLink exact to="/">
+						Home
+					</NavLink>
 				</li>
 				<li>
 					<NavLink to="/dex">Pokedex</NavLink>

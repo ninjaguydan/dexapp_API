@@ -1,6 +1,5 @@
-import React from "react"
 import { Link } from "react-router-dom"
-import DesktopNav from "./Navigation/DesktopNav"
+import DesktopNav from "./DesktopNav"
 
 const Header = ({ searchBtn }) => {
 	return (

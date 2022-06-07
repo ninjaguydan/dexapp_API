@@ -160,8 +160,15 @@ Timeline Styles
 	background-color: #444444;
 	transition: transform 0.2s;
 }
-.card .content.team .team-container img:hover {
+.card .content.team .team-container img:hover,
+.card .content.team .team-container a:focus img {
 	transform: scale(1.1625);
+}
+.card .content.team .team-container a:focus {
+	outline: none;
+}
+.card .content.team .team-container a:focus img {
+	outline: 3px solid #3196fd40;
 }
 /*---------- 600px BREAK POINT ----------*/
 @media only screen and (min-width: 600px) {

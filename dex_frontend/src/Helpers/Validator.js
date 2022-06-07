@@ -53,12 +53,6 @@ export function validator(object) {
 	}
 	return errors
 }
-export function checkValue(value) {
-	return value !== null && value !== ""
-}
-export function checkIfErrors(object) {
-	return Object.keys(object).length === 0
-}
 //Returns true if every value in the object is empty
 export function checkIfEmpty(object) {
 	let values = Object.values(object)

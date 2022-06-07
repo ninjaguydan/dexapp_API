@@ -1,13 +1,21 @@
 import React from "react"
-import user_icon from "../../media/0.png"
+import getImageByKey from "../../Helpers/getImageByKey"
+import { Link, Navigate } from "react-router-dom"
 import dex_icon_w from "../../media/dex-icon-w.svg"
+import { useDispatch } from "react-redux"
 
-const UserMenuMobile = () => {
+const UserMenuMobile = ({ user }) => {
+	const dispatch = useDispatch()
+
+	const onLogout = () => {
+		dispatch({ type: "users/ON_LOGOUT" })
+	}
+
 	return (
 		<div className="mobile-nav-slider">
-			<img src={user_icon} alt="" className="user-img" />
-			<p className="bold">Daniel Thompson</p>
-			<p className="username">danboy</p>
+			<img src={getImageByKey(user.user_img)} alt="user" className="user-img" style={{ backgroundColor: user.bg_color }} />
+			<p className="bold">{user.name}</p>
+			<p className="username">{user.username}</p>
 
 			<div className="follow-cnt">
 				<p>
@@ -20,23 +28,23 @@ const UserMenuMobile = () => {
 			<nav>
 				<ul>
 					<li>
-						<a href="/">
+						<Link to="/">
 							<i className="material-icons">account_circle</i>Profile
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="/">
+						<Link to="/">
 							<img src={dex_icon_w} alt="dexapp icon" /> Pokedex
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="/">
+						<Link to="/">
 							<i className="material-icons">home</i>Home
-						</a>
+						</Link>
 					</li>
 					<hr />
 					<li>
-						<a href="/">Logout</a>
+						<button onClick={() => onLogout()}>Logout</button>
 					</li>
 				</ul>
 			</nav>
