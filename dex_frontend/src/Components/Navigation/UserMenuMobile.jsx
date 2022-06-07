@@ -13,16 +13,16 @@ const UserMenuMobile = ({ user }) => {
 
 	return (
 		<div className="mobile-nav-slider">
-			<img src={getImageByKey(user.user_img)} alt="user" className="user-img" style={{ backgroundColor: user.bg_color }} />
+			<img src={getImageByKey(user.user_img)} alt="user" className={`user-img ${user.bg_color}`} />
 			<p className="bold">{user.name}</p>
 			<p className="username">{user.username}</p>
 
 			<div className="follow-cnt">
 				<p>
-					<span className="bold">10</span> Following
+					<span className="bold">0</span> Following
 				</p>
 				<p>
-					<span className="bold">9</span> Followers
+					<span className="bold">0</span> Followers
 				</p>
 			</div>
 			<nav>

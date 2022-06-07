@@ -16,16 +16,6 @@ function validateUsername(value) {
 		return ""
 	}
 }
-function validateEmail(value) {
-	const regex = RegExp(
-		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-	)
-	if (value && !regex.test(value)) {
-		return "Invalid email address"
-	} else {
-		return ""
-	}
-}
 function validatePassword(value) {
 	if (value && value.length < 8) {
 		return "Password must be at least 8 characters"
@@ -35,7 +25,7 @@ function validatePassword(value) {
 		return ""
 	}
 }
-function confirmPasswordMatch(value1, value2) {
+export function confirmPasswordMatch(value1, value2) {
 	if (value1 && value1 !== value2) {
 		return "Passwords do not match"
 	} else {
@@ -47,9 +37,7 @@ export function validator(object) {
 	let errors = {
 		name: validateName(object.name),
 		username: validateUsername(object.username),
-		email: validateEmail(object.email),
 		password: validatePassword(object.password),
-		confirm: confirmPasswordMatch(object.confirm, object.password),
 	}
 	return errors
 }

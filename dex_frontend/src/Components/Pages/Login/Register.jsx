@@ -1,32 +1,47 @@
 import FormInput from "../../Forms/FormInput"
-import { user } from "../../../Data/Models"
+import { user as userModel } from "../../../Data/Models"
+import { v4 as uuidv4 } from "uuid"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { validator, checkIfValues, checkIfEmpty } from "../../../Helpers/Validator"
+import { useDispatch } from "react-redux"
+import { validator, checkIfValues, checkIfEmpty, confirmPasswordMatch } from "../../../Helpers/Validator"
 import pk_ball from "../../../media/pokeball.png"
 
 const Register = () => {
+	const dispatch = useDispatch()
 	const [values, setValues] = useState({
 		name: "",
 		username: "",
 		password: "",
-		confirm: "",
 	})
+	const [confirm, setConfirm] = useState("")
 	const [errors, setErrors] = useState(values)
-
 	const handleChange = (event) => {
 		setValues({ ...values, [event.target.id]: event.target.value })
 	}
+	const handleConfirm = (event) => {
+		setConfirm(event.target.value)
+	}
+
 	useEffect(() => {
-		setErrors({ ...errors, ...validator(values) })
-	}, [values])
+		setErrors({ ...errors, ...validator(values), confirm: confirmPasswordMatch(confirm, values.password) })
+	}, [values, confirm])
+
+	function onSubmit(event) {
+		event.preventDefault()
+		let newUser = { ...userModel, ...values, id: uuidv4() }
+		dispatch({
+			type: "users/REGISTER",
+			newUser,
+		})
+	}
 
 	return (
 		<div className="log-res-wrapper">
 			<div className="login-registration">
 				<h2 className="header1">Register</h2>
 				<hr />
-				<form>
+				<form onSubmit={(e) => onSubmit(e)}>
 					<FormInput label="Name" name="name" value={values.name} handleChange={handleChange} error={errors.name} />
 					<FormInput label="Username" name="username" value={values.username} handleChange={handleChange} error={errors.username} />
 					<FormInput
@@ -41,8 +56,8 @@ const Register = () => {
 						label="Confirm Password"
 						name="confirm"
 						type="password"
-						value={values.confirm}
-						handleChange={handleChange}
+						value={confirm}
+						handleChange={handleConfirm}
 						error={errors.confirm}
 					/>
 					<div className="btn-container">

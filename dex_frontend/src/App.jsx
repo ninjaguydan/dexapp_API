@@ -21,6 +21,7 @@ function App() {
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
 
 	console.log(loggedUser)
+	console.log(useSelector((state) => state.users))
 
 	return (
 		<MyRouter>

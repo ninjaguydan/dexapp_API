@@ -422,6 +422,12 @@ Navigation Styles
 	width: 1.5rem;
 	margin-right: 1rem;
 }
+.nav-user-icon {
+	border-radius: 50%;
+	width: 35px;
+	position: relative;
+	top: 5px;
+}
 /*---------- 550px BREAK POINT ----------*/
 @media only screen and (min-width: 550px) {
 	.main-nav {

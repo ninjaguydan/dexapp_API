@@ -1,22 +1,22 @@
 import { v4 as uuidv4 } from "uuid"
 
-const user = {
-	id: uuidv4(),
+export const user = {
+	id: "",
 	name: "",
 	username: "",
 	password: "",
-	created: "",
-	user_img: "/default/0.png",
-	bg_color: "",
+	created: new Date(),
+	user_img: "dfault",
+	bg_color: "gray",
 }
-const post = {
+export const post = {
 	id: uuidv4(),
 	content: "",
 	likes: [],
 	added_by: null,
 	created: "",
 }
-const review = {
+export const review = {
 	id: uuidv4(),
 	pkmn: null,
 	content: "",
@@ -25,7 +25,7 @@ const review = {
 	added_by: null,
 	created: "",
 }
-const team = {
+export const team = {
 	id: uuidv4(),
 	name: "",
 	members: [],
@@ -33,7 +33,7 @@ const team = {
 	added_by: null,
 	created: "",
 }
-const replies = {
+export const replies = {
 	id: uuidv4(),
 	content: "",
 	post: null,

@@ -20,6 +20,12 @@ function reducer(state = initState, action) {
 				...state,
 				loggedUser: { ...initState.loggedUser },
 			}
+		case "users/REGISTER":
+			return {
+				...state,
+				loggedUser: { ...action.newUser },
+				users: [...state.users, action.newUser],
+			}
 		default:
 			return state
 	}

@@ -1,8 +1,12 @@
 import React from "react"
 import dex_icon from "../../media/dex-icon-w.svg"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import UserIcon from "./UserIcon"
 
 const MobileNav = ({ searchBtn }) => {
+	const user = useSelector((state) => state.loggedUser)
+
 	return (
 		<nav>
 			<ul className="mobile-nav">
@@ -22,12 +26,16 @@ const MobileNav = ({ searchBtn }) => {
 					</Link>
 				</li>
 				<li>
-					<Link to="/login">
-						<i className="material-icons" aria-hidden="true">
-							account_circle
-						</i>
-						<span className="sr-only">login or signup</span>
-					</Link>
+					{user ? (
+						<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} mobileNav={"nav-user-icon"} />
+					) : (
+						<Link to="/login">
+							<i className="material-icons" aria-hidden="true">
+								account_circle
+							</i>
+							<span className="sr-only">login or signup</span>
+						</Link>
+					)}
 				</li>
 			</ul>
 		</nav>
