@@ -1,11 +1,14 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import pkmn_img from "../../../media/pkmn.png"
 import FormInput from "../../Forms/FormInput"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { user } from "../../../Data/Models"
 
 const Login = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const users = useSelector((state) => state.users)
 	const [creds, setCreds] = useState({
 		username: "",
 		password: "",
@@ -16,12 +19,17 @@ const Login = () => {
 	}
 	function onSubmit(event) {
 		event.preventDefault()
-		dispatch({
-			type: "users/ON_LOGIN",
-			creds,
-		})
+		let logUser = users.filter((user) => user.username === creds.username && user.password === creds.password)
+		if (logUser[0]) {
+			dispatch({
+				type: "users/ON_LOGIN",
+				logUser,
+			})
+			navigate("/")
+		} else {
+			setError(true)
+		}
 	}
-
 	return (
 		<div className="log-res-wrapper">
 			<div className="login-registration">

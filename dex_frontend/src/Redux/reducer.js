@@ -4,6 +4,7 @@ const initState = {
 		{ id: 1, name: "Daniel Thompson", username: "danboy", password: "password", user_img: "m1", bg_color: "red" },
 		{ id: 2, name: "John Doe", username: "longjonsilver", password: "1234", user_img: "m2", bg_color: "green" },
 	],
+	menuIsOpen: false,
 }
 
 function reducer(state = initState, action) {
@@ -12,19 +13,24 @@ function reducer(state = initState, action) {
 			return {
 				...state,
 				loggedUser: {
-					...state.users.filter((user) => user.username === action.creds.username && user.password === action.creds.password)[0],
+					...action.logUser[0],
 				},
 			}
 		case "users/ON_LOGOUT":
 			return {
 				...state,
-				loggedUser: { ...initState.loggedUser },
+				loggedUser: false,
 			}
 		case "users/REGISTER":
 			return {
 				...state,
 				loggedUser: { ...action.newUser },
 				users: [...state.users, action.newUser],
+			}
+		case "users/MENU_TOGGLE":
+			return {
+				...state,
+				menuIsOpen: !state.menuIsOpen,
 			}
 		default:
 			return state

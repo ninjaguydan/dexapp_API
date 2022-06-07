@@ -20,15 +20,15 @@ function App() {
 	const [menuIsOpen, setMenuIsOpen] = useState(false)
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
 
-	console.log(loggedUser)
-	console.log(useSelector((state) => state.users))
+	// console.log(loggedUser)
+	// console.log(useSelector((state) => state.users))
 
 	return (
 		<MyRouter>
 			<Header searchBtn={searchBtn} />
-			{showSearchBar && <SearchBar />}
+			<SearchBar show={showSearchBar} />
 			{loggedUser && <MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />}
-			{menuIsOpen && <UserMenuMobile user={loggedUser} />}
+			{menuIsOpen && loggedUser ? <UserMenuMobile user={loggedUser} /> : null}
 			<MobileNav searchBtn={searchBtn} />
 			<div className="app-container">
 				<Routes>

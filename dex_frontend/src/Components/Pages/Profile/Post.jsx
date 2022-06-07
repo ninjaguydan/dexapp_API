@@ -13,7 +13,6 @@ function Post({ post }) {
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const [replies, setReplies] = useState([])
 	let user = useSelector((state) => state.users.filter((user) => user.id === post.added_by)[0])
-	console.log(user)
 
 	useEffect(() => {
 		fetch(`http://localhost:8000/api/users/${post.added_by}`)

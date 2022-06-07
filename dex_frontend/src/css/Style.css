@@ -203,7 +203,7 @@ select.form-control-custom option {
 		display: flex !important;
 		top: 10px;
 		width: 42%;
-		right: 385px;
+		right: 408px;
 		background-color: transparent;
 		border-bottom: unset;
 		z-index: 2;
@@ -428,6 +428,16 @@ Navigation Styles
 	position: relative;
 	top: 5px;
 }
+li.nav-user-desk {
+	display: flex;
+}
+li.nav-user-desk img {
+	top: 0;
+}
+li.nav-user-desk .btn:hover {
+	color: var(--brand-secondary);
+}
+
 /*---------- 550px BREAK POINT ----------*/
 @media only screen and (min-width: 550px) {
 	.main-nav {

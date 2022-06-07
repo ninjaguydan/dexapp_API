@@ -1,7 +1,7 @@
 import FormInput from "../../Forms/FormInput"
 import { user as userModel } from "../../../Data/Models"
 import { v4 as uuidv4 } from "uuid"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { validator, checkIfValues, checkIfEmpty, confirmPasswordMatch } from "../../../Helpers/Validator"
@@ -9,6 +9,7 @@ import pk_ball from "../../../media/pokeball.png"
 
 const Register = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const [values, setValues] = useState({
 		name: "",
 		username: "",
@@ -34,6 +35,7 @@ const Register = () => {
 			type: "users/REGISTER",
 			newUser,
 		})
+		navigate("/")
 	}
 
 	return (

@@ -1,11 +1,12 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-
-const activeStyle = {
-	color: "#009df1",
-}
+import { useSelector } from "react-redux"
+import UserIcon from "./UserIcon"
+import { FaAngleDown } from "react-icons/fa"
 
 const DesktopNav = ({ searchBtn }) => {
+	const user = useSelector((state) => state.loggedUser)
+
 	return (
 		<nav>
 			<ul className="main-nav">
@@ -18,12 +19,24 @@ const DesktopNav = ({ searchBtn }) => {
 				<li>
 					<NavLink to="/dex">Pokedex</NavLink>
 				</li>
-				<li className="bold">
-					<NavLink to="/register">Sign Up</NavLink>
-				</li>
-				<li className="bold">
-					<NavLink to="/login">Login</NavLink>
-				</li>
+				{user ? (
+					<li className="nav-user-desk">
+						<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} mobileNav={"nav-user-icon"} />
+						<button className="btn">
+							{user.username}
+							<FaAngleDown />
+						</button>
+					</li>
+				) : (
+					<>
+						<li className="bold">
+							<NavLink to="/register">Sign Up</NavLink>
+						</li>
+						<li className="bold">
+							<NavLink to="/login">Login</NavLink>
+						</li>
+					</>
+				)}
 			</ul>
 		</nav>
 	)

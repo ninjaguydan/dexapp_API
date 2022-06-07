@@ -307,7 +307,7 @@ Post Form Styles
 BACKGROUND COLORS
 ==========================================================*/
 .gray {
-	background-color: var(--brand-gray2) !important;
+	background-color: #000 !important;
 }
 .red {
 	background-color: var(--brand-primary) !important;
