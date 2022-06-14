@@ -12,9 +12,7 @@ const DesktopNav = ({ searchBtn }) => {
 			<ul className="main-nav">
 				<li>{searchBtn}</li>
 				<li>
-					<NavLink exact to="/">
-						Home
-					</NavLink>
+					<NavLink to="/">Home</NavLink>
 				</li>
 				<li>
 					<NavLink to="/dex">Pokedex</NavLink>

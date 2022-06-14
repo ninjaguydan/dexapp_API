@@ -1,5 +1,4 @@
 import FormInput from "../../Forms/FormInput"
-import { user as userModel } from "../../../Data/Models"
 import { v4 as uuidv4 } from "uuid"
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
@@ -30,7 +29,12 @@ const Register = () => {
 
 	function onSubmit(event) {
 		event.preventDefault()
-		let newUser = { ...userModel, ...values, id: uuidv4() }
+		let newUser = {
+			...values,
+			id: uuidv4(),
+			user_img: "dfault",
+			bg_color: "gray",
+		}
 		dispatch({
 			type: "users/REGISTER",
 			newUser,

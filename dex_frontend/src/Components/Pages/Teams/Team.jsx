@@ -3,7 +3,6 @@ import Loading from "../../Loader/Loading"
 import { useState, useEffect } from "react"
 import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import { Link } from "react-router-dom"
-import { replies as repliesJSON } from "../../../Data/replies"
 import { getTimeDifference } from "../../../Helpers/Helpers"
 
 function Team({ team }) {
@@ -23,10 +22,6 @@ function Team({ team }) {
 			.catch((errors) => console.error(errors))
 	}, [team.added_by])
 
-	useEffect(() => {
-		setReplies(repliesJSON.filter((reply) => reply.team === team.id))
-	}, [team.id])
-
 	if (isLoading) {
 		return <Loading />
 	}
@@ -43,7 +38,7 @@ function Team({ team }) {
 				<span className="team-container">
 					{team.members.map((value) => {
 						return (
-							<Link to={`/pokemon/${value}`}>
+							<Link to={`/pokemon/${value}`} key={value}>
 								<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${value}.png`} />
 							</Link>
 						)

@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react"
 import Results from "./Results"
+import usePokemon from "../../../Helpers/usePokemon"
 
 const Pokedex = () => {
-	const [results, setResults] = useState([])
-	const [isFetching, setIsFetching] = useState(true)
-
-	useEffect(() => {
-		fetch(`http://localhost:8000/api/pokemon/`)
-			.then((response) => response.json())
-			.then((json) => {
-				setResults(json)
-				setIsFetching(false)
-			})
-			.catch((errors) => console.error(errors))
-	}, [])
+	const { data: results, isLoading } = usePokemon()
 
 	return (
 		<>
@@ -44,7 +33,7 @@ const Pokedex = () => {
 				</select>
 				<button className="btn secondary">Filter</button>
 			</form>
-			<Results results={results} isLoading={isFetching} />
+			<Results results={results} isLoading={isLoading} />
 		</>
 	)
 }

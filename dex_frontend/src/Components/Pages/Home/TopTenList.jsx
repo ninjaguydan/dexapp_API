@@ -12,7 +12,7 @@ function TopTenList() {
 			</li>
 			{arr.map((item, index) => {
 				return (
-					<li className="list-group-item">
+					<li className="list-group-item" key={index + 1}>
 						<Link to={`/pokemon/`}>
 							<img
 								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
@@ -21,8 +21,8 @@ function TopTenList() {
 								alt="{{pokemon.name}}'s official art"
 							/>
 							<div className="info">
-								<h6 class="bold">Fletchinder</h6>
-								<div class="icon-group">
+								<h6 className="bold">Fletchinder</h6>
+								<div className="icon-group">
 									<p>
 										<FaHeart /> 1.2k
 									</p>

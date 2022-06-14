@@ -1,36 +1,15 @@
 import ReplyList from "../../ReplyList"
-import Loading from "../../Loader/Loading"
 import { Link } from "react-router-dom"
 import { getTimeDifference } from "../../../Helpers/Helpers"
 import { useEffect, useState } from "react"
 import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
-import { replies as repliesJSON } from "../../../Data/replies"
 import { useSelector } from "react-redux"
 import UserIcon from "../../Navigation/UserIcon"
 
 function Post({ post }) {
-	const [isLoading, setIsLoading] = useState(true)
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const [replies, setReplies] = useState([])
 	let user = useSelector((state) => state.users.filter((user) => user.id === post.added_by)[0])
-
-	useEffect(() => {
-		fetch(`http://localhost:8000/api/users/${post.added_by}`)
-			.then((response) => response.json())
-			.then((json) => {
-				// setUser(json)
-				setIsLoading(false)
-			})
-			.catch((errors) => console.error(errors))
-	}, [post.added_by])
-
-	useEffect(() => {
-		setReplies(repliesJSON.filter((reply) => reply.post === post.id))
-	}, [post.id])
-
-	if (isLoading) {
-		return <Loading />
-	}
 
 	return (
 		<div className="card">

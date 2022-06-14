@@ -407,6 +407,13 @@ Navigation Styles
 	display: flex;
 	margin-bottom: 1rem;
 }
+.mobile-nav-slider li button {
+	background-color: unset;
+	color: var(--brand-gray3);
+}
+.mobile-nav-slider li button:hover {
+	color: var(--brand-secondary);
+}
 .mobile-nav-slider ul li a {
 	display: flex;
 	align-items: center;
