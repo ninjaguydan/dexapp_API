@@ -1,36 +1,20 @@
 import ReplyList from "../../ReplyList"
-import Loading from "../../Loader/Loading"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { getTimeDifference } from "../../../Helpers/Helpers"
+import { useSelector } from "react-redux"
 
 function Team({ team }) {
-	const [user, setUser] = useState({})
-	const [members, setMembers] = useState([])
-	const [isLoading, setIsLoading] = useState(true)
+	const user = useSelector((state) => state.users.filter((user) => user.id === team.added_by))
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const [replies, setReplies] = useState([])
-
-	useEffect(() => {
-		fetch(`http://localhost:8000/api/users/${team.added_by}`)
-			.then((response) => response.json())
-			.then((json) => {
-				setUser(json)
-				setIsLoading(false)
-			})
-			.catch((errors) => console.error(errors))
-	}, [team.added_by])
-
-	if (isLoading) {
-		return <Loading />
-	}
 
 	return (
 		<div className="card">
 			<div className="content team">
 				<h4>
-					<Link to={`/profile/${""}`}>{user.username}</Link>
+					<Link to={`/profile/${user.username}`}>{user.username}</Link>
 					<span> created the team, </span>
 					<Link to={""}> {team.name}</Link>
 					<span className="date"> &#8226; {getTimeDifference(team.created)}</span>

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom"
 import pkmn_img from "../../../media/pkmn.png"
 import FormInput from "../../Forms/FormInput"
 import { useDispatch, useSelector } from "react-redux"
-import { user } from "../../../Data/Models"
 
 const Login = () => {
 	const dispatch = useDispatch()

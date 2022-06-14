@@ -19,8 +19,6 @@ const Review = ({ review, TL_view = false }) => {
 		return <Loading />
 	}
 
-	console.log(replies)
-
 	return (
 		<div className="card">
 			{TL_view ? (
@@ -60,7 +58,9 @@ const Review = ({ review, TL_view = false }) => {
 					<FaRegCommentAlt /> {replies.length}
 				</button>
 			</div>
-			<div className="replies">{repliesVisible && <ReplyList replies={replies} user={user.username} reviewId={review.id} />}</div>
+			<div className="replies">
+				{repliesVisible && <ReplyList replies={replies} user={user.username} kind={{ name: "review", id: review.id }} />}
+			</div>
 		</div>
 	)
 }

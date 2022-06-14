@@ -47,7 +47,6 @@ function PostForm({ btnText, placeholder, type = { name: "POST" } }) {
 					pkmn: type.id,
 				}
 				dispatch({ type: "review/CREATE", newReview })
-				console.log(newReview)
 				break
 			case "REPLY":
 				let newReply = {
@@ -62,10 +61,9 @@ function PostForm({ btnText, placeholder, type = { name: "POST" } }) {
 						newReply["for"] = "post"
 				}
 				dispatch({ type: "reply/CREATE", newReply })
-				console.log(newReply)
 				break
 			default:
-				dispatch({ type: "users/CREATE_POST", newPost })
+				dispatch({ type: "post/CREATE", newPost })
 				console.log(newPost)
 		}
 		setFormData(empty)

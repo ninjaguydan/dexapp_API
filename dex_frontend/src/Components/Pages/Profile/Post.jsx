@@ -8,7 +8,7 @@ import UserIcon from "../../Navigation/UserIcon"
 
 function Post({ post }) {
 	const [repliesVisible, setRepliesVisible] = useState(false)
-	const [replies, setReplies] = useState([])
+	const replies = useSelector((state) => state.replies.filter((reply) => reply.for === "post" && reply.forId === post.id))
 	let user = useSelector((state) => state.users.filter((user) => user.id === post.added_by)[0])
 
 	return (
@@ -16,7 +16,7 @@ function Post({ post }) {
 			<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} />
 			<div className="content">
 				<h4>
-					<Link to={`/profile/${""}`}>{user.name}</Link>
+					<Link to={`/profile/${user.username}`}>{user.name}</Link>
 					<span> {user.username}</span>
 					<span className="date"> &#8226; {getTimeDifference(post.created)}</span>
 				</h4>
@@ -35,7 +35,9 @@ function Post({ post }) {
 					<FaRegCommentAlt /> {replies.length}
 				</button>
 			</div>
-			<div className="replies">{repliesVisible && <ReplyList replies={replies} user={user.username} />}</div>
+			<div className="replies">
+				{repliesVisible && <ReplyList replies={replies} user={user.username} kind={{ name: "post", id: post.id }} />}
+			</div>
 		</div>
 	)
 }

@@ -2,7 +2,7 @@ import Reply from "./Reply"
 import PostForm from "./Forms/PostForm"
 import { useSelector } from "react-redux"
 
-function ReplyList({ replies, user, reviewId }) {
+function ReplyList({ replies, user, kind }) {
 	const loggedUser = useSelector((state) => state.loggedUser)
 	return (
 		<>
@@ -10,7 +10,7 @@ function ReplyList({ replies, user, reviewId }) {
 				return <Reply reply={reply} key={reply.id} />
 			})}
 			{loggedUser && (
-				<PostForm btnText={"Reply"} placeholder={`Replying to ${user}...`} type={{ name: "REPLY", for: { name: "review", id: reviewId } }} />
+				<PostForm btnText={"Reply"} placeholder={`Replying to ${user}...`} type={{ name: "REPLY", for: { name: kind.name, id: kind.id } }} />
 			)}
 		</>
 	)

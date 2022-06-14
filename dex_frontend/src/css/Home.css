@@ -140,7 +140,7 @@ Timeline Styles
 .profile.main .post-column.main {
 	max-width: 700px;
 }
-.profile.main .post-column.main form {
+.post-column.main form {
 	justify-content: end;
 }
 .card .content.team {

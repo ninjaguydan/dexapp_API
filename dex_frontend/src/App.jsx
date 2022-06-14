@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Routes, Route, BrowserRouter as MyRouter, Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 // Comps
@@ -13,6 +13,7 @@ import Home from "./Components/Pages/Home/Home"
 import Register from "./Components/Pages/Login/Register"
 import Pokemon from "./Components/Pages/Pokemon/Pokemon"
 import Pokedex from "./Components/Pages/Search/Pokedex"
+import User from "./Components/Pages/Profile/User"
 
 function App() {
 	const loggedUser = useSelector((state) => state.loggedUser)
@@ -37,7 +38,7 @@ function App() {
 					<Route path="/register" element={<Register />} />
 					<Route path="/dex" element={<Pokedex />} />
 					<Route path="/pokemon/:id" element={<Pokemon />} />
-					<Route path="/profile/:username" element={""} />
+					<Route path="/profile/:username" element={<User />} />
 				</Routes>
 			</div>
 		</MyRouter>

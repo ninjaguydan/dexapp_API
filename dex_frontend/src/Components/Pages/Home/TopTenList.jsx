@@ -1,9 +1,25 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { FaStar, FaHeart } from "react-icons/fa"
+import usePokemon from "../../../Helpers/usePokemon"
+import Loading from "../../Loader/Loading"
 
 function TopTenList() {
-	const arr = [...Array(10).keys()]
+	// const { data, isLoading } = usePokemon()
+
+	function getRandomInt(min, max) {
+		min = Math.ceil(min)
+		max = Math.floor(max)
+		return Math.floor(Math.random() * (max - min) + min)
+	}
+	let arr = []
+	while (arr.length < 10) {
+		arr.push(getRandomInt(1, 899))
+	}
+
+	// if (isLoading) {
+	// 	return <Loading />
+	// }
 
 	return (
 		<ol className="card list-group" id="style-4">
@@ -12,12 +28,10 @@ function TopTenList() {
 			</li>
 			{arr.map((item, index) => {
 				return (
-					<li className="list-group-item" key={index + 1}>
-						<Link to={`/pokemon/`}>
+					<li className="list-group-item" key={item}>
+						<Link to={`/pokemon/${item}`}>
 							<img
-								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-									index + 1
-								}.png`}
+								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item}.png`}
 								alt="{{pokemon.name}}'s official art"
 							/>
 							<div className="info">

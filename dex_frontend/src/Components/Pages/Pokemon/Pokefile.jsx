@@ -3,8 +3,11 @@ import "../../../css/Pkmn_types.css"
 import { Link } from "react-router-dom"
 import { makeHundreds, getBaseStatTotal } from "../../../Helpers/Helpers"
 import { FaStar, FaHeart, FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import { useSelector } from "react-redux"
 
 const Profile = ({ pokemon }) => {
+	const loggedInUser = useSelector((state) => state.loggedUser)
+	const reviewCnt = useSelector((state) => state.reviews.filter((review) => review.pkmn === pokemon.id).length)
 	const stats = {
 		HP: pokemon.hp,
 		Attack: pokemon.attack,
@@ -64,17 +67,19 @@ const Profile = ({ pokemon }) => {
 			})}
 			<li className="list-group-item striped">
 				<h3 className="bold">Reviews</h3>
-				<p>00</p>
+				<p>{reviewCnt}</p>
 			</li>
 			<li className="list-group-item striped" style={{ justifyContent: "center" }}>
 				<p className="bold">Featured on 0 Teams!</p>
 			</li>
-			<li className="list-group-item striped">
-				<button className="btn secondary">Add to Team</button>
-				<button className="btn secondary">
-					<FaStar /> Favorite
-				</button>
-			</li>
+			{loggedInUser && (
+				<li className="list-group-item striped">
+					<button className="btn secondary">Add to Team</button>
+					<button className="btn secondary">
+						<FaStar /> Favorite
+					</button>
+				</li>
+			)}
 			<li className="list-group-item striped">
 				<Link to={`/pokemon/${prev}`} className="pokenav">
 					<FaArrowLeft />
