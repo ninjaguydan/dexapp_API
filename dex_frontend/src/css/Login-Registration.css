@@ -6,10 +6,10 @@
 	padding: 1.5rem;
 	border-radius: 0.5rem;
 }
-.login-registration form .form-row {
+form .form-row {
 	margin-bottom: 1rem;
 }
-.login-registration form .form-row label {
+form .form-row label {
 	margin-bottom: 5px;
 }
 .btn-container {

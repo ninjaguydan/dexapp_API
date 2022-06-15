@@ -84,6 +84,9 @@ ul.card li.list-group-item .followcnt-group span {
 	color: var(--brand-gray3);
 	font-weight: 600;
 }
+ul.card li.list-group-item.striped.edit-btn {
+	justify-content: center;
+}
 ul.card li.list-group-item.striped {
 	display: flex;
 	flex-wrap: wrap;
@@ -322,6 +325,100 @@ Post Form Styles
 @media only screen and (min-width: 530px) {
 	.post-column .card form {
 		width: calc(100% - 76px);
+	}
+}
+/*==========================================================
+Edit Profile Styles
+==========================================================*/
+.modal-bg {
+	/* display: none; */
+	padding: 1rem;
+	background-color: rgb(0, 0, 0, 0.8);
+	position: fixed;
+	z-index: 11;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.edit-profile-modal {
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+	padding: 2rem;
+	background-color: var(--brand-gray2);
+	border-radius: 5px;
+	animation: zoom 0.3s forwards;
+	-webkit-animation: zoom 0.3s forwards;
+}
+.modal-head {
+	display: flex;
+	justify-content: space-between;
+}
+.modal-head .close {
+	background-color: unset;
+	color: var(--brand-gray3);
+	font-size: 1.5rem;
+}
+.modal-head .close:hover {
+	color: var(--brand-secondary);
+}
+.edit-profile-modal h3 {
+	margin-bottom: 1.55rem;
+}
+.edit-profile-modal .img-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.25rem;
+}
+.edit-profile-modal button {
+	background-color: unset;
+	transition: transform 0.2s;
+}
+.edit-profile-modal button.selected {
+	outline: 3px solid #71b8fe80;
+}
+.edit-profile-modal button:hover,
+.edit-profile-modal button:focus {
+	transform: scale(1.0625);
+}
+.edit-profile-modal img {
+	width: 100%;
+}
+.edit-profile-modal .colors {
+	grid-template-columns: repeat(6, 1fr);
+}
+.edit-profile-modal .colors button {
+	width: 100%;
+	border-radius: 0.5rem;
+}
+.edit-profile-modal .colors button::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+.edit-profile-modal .btn {
+	width: 100%;
+}
+.edit-profile-modal .btn.primary {
+	margin-bottom: 1rem;
+}
+/*---------- Modal animation ----------*/
+@keyframes zoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+@-webkit-keyframes zoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
 	}
 }
 /*==========================================================

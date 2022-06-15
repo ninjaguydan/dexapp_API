@@ -1,5 +1,13 @@
 const initState = {
-	loggedUser: null,
+	loggedUser: {
+		id: 2,
+		bio: "This is a bio. I can put anything here. Gotta be respectful tho",
+		name: "John Doe",
+		username: "longjonsilver",
+		password: "1234",
+		user_img: "m2",
+		bg_color: "green",
+	},
 	menuIsOpen: false,
 	users: [
 		{

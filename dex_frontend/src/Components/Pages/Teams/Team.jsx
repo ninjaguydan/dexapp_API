@@ -6,7 +6,7 @@ import { getTimeDifference } from "../../../Helpers/Helpers"
 import { useSelector } from "react-redux"
 
 function Team({ team }) {
-	const user = useSelector((state) => state.users.filter((user) => user.id === team.added_by))
+	const user = useSelector((state) => state.users.filter((user) => user.id === team.added_by)[0])
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const [replies, setReplies] = useState([])
 

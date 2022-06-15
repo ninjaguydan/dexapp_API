@@ -4,6 +4,7 @@ import getImageByKey from "../../../Helpers/getImageByKey"
 function Profile({ user }) {
 	const postCnt = useSelector((state) => state.posts.filter((post) => post.added_by === user.id).length)
 	const reviewCnt = useSelector((state) => state.reviews.filter((review) => review.added_by === user.id).length)
+	const loggedInUser = useSelector((state) => state.loggedUser)
 
 	return (
 		<ul className="card">
@@ -23,6 +24,11 @@ function Profile({ user }) {
 					</p>
 				</div>
 			</li>
+			{loggedInUser?.id === user.id && (
+				<li className="list-group-item striped edit-btn">
+					<button className="btn secondary">Edit Profile</button>
+				</li>
+			)}
 			{user?.location && (
 				<li className="list-group-item striped">
 					<p className="bold">Location</p>
