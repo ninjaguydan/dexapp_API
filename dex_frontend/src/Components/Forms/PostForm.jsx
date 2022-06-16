@@ -64,7 +64,6 @@ function PostForm({ btnText, placeholder, type = { name: "POST" } }) {
 				break
 			default:
 				dispatch({ type: "post/CREATE", newPost })
-				console.log(newPost)
 		}
 		setFormData(empty)
 	}

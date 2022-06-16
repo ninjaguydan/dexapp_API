@@ -15,7 +15,7 @@ const User = () => {
 
 	return (
 		<div className="profile">
-			<EditProfile />
+			{editForm && <EditProfile closeEdit={() => setEditForm(false)} />}
 			<Profile user={user} openEdit={() => setEditForm(true)} />
 			<div className="post-column main">
 				{loggedInUser?.id === user.id && <PostForm btnText={"Post"} placeholder={`What's on your mind?`} />}

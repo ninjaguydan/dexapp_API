@@ -7,15 +7,14 @@ const FormInput = ({ label, name, type = "text", value, handleChange, error = fa
 			<label htmlFor={name}>{label}</label>
 			{textArea ? (
 				<textarea
-					id={"name"}
+					id={name}
 					className="form-control"
 					rows={5}
 					onChange={(e) => {
 						handleChange(e)
 					}}
-				>
-					{value}
-				</textarea>
+					defaultValue={value}
+				></textarea>
 			) : (
 				<input
 					type={type}

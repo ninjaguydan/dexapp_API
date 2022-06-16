@@ -101,6 +101,23 @@ function reducer(state = initState, action) {
 				...state,
 				menuIsOpen: !state.menuIsOpen,
 			}
+		case "users/UPDATE":
+			return {
+				...state,
+				loggedUser: {
+					...state.loggedUser,
+					...action.formData,
+				},
+				users: state.users.map((user) => {
+					if (user.id === action.userId) {
+						return {
+							...user,
+							...action.formData,
+						}
+					}
+					return user
+				}),
+			}
 		case "post/CREATE":
 			return {
 				...state,

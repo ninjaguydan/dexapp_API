@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import getImageByKey from "../../../Helpers/getImageByKey"
 
-function Profile({ user }) {
+function Profile({ user, openEdit }) {
 	const postCnt = useSelector((state) => state.posts.filter((post) => post.added_by === user.id).length)
 	const reviewCnt = useSelector((state) => state.reviews.filter((review) => review.added_by === user.id).length)
 	const loggedInUser = useSelector((state) => state.loggedUser)
@@ -26,13 +26,15 @@ function Profile({ user }) {
 			</li>
 			{loggedInUser?.id === user.id && (
 				<li className="list-group-item striped edit-btn">
-					<button className="btn secondary">Edit Profile</button>
+					<button onClick={openEdit} className="btn secondary">
+						Edit Profile
+					</button>
 				</li>
 			)}
 			{user?.location && (
 				<li className="list-group-item striped">
 					<p className="bold">Location</p>
-					<span>Atlanta, GA</span>
+					<span>{user.location}</span>
 				</li>
 			)}
 			{user?.pronouns && (
