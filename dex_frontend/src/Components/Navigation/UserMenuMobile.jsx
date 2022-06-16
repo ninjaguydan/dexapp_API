@@ -4,11 +4,12 @@ import { Link, useNavigate } from "react-router-dom"
 import dex_icon_w from "../../media/dex-icon-w.svg"
 import { useDispatch } from "react-redux"
 
-const UserMenuMobile = ({ user }) => {
+const UserMenuMobile = ({ user, openMenu }) => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const onLogout = () => {
+		openMenu()
 		dispatch({ type: "users/ON_LOGOUT" })
 		navigate("/login")
 	}
@@ -30,17 +31,17 @@ const UserMenuMobile = ({ user }) => {
 			<nav>
 				<ul>
 					<li>
-						<Link to="/">
+						<Link to={`/profile/${user.username}`} onClick={openMenu}>
 							<i className="material-icons">account_circle</i>Profile
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/dex" onClick={openMenu}>
 							<img src={dex_icon_w} alt="dexapp icon" /> Pokedex
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/" onClick={openMenu}>
 							<i className="material-icons">home</i>Home
 						</Link>
 					</li>

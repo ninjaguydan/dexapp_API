@@ -1,6 +1,6 @@
 import ReplyList from "../../ReplyList"
 import { Link } from "react-router-dom"
-import { getTimeDifference } from "../../../Helpers/Helpers"
+import { getTimeDifference, truncateStr } from "../../../Helpers/Helpers"
 import { useEffect, useState } from "react"
 import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import { useSelector } from "react-redux"
@@ -16,8 +16,8 @@ function Post({ post }) {
 			<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} />
 			<div className="content">
 				<h4>
-					<Link to={`/profile/${user.username}`}>{user.name}</Link>
-					<span> {user.username}</span>
+					<Link to={`/profile/${truncateStr(user.username)}`}>{truncateStr(user.name)}</Link>
+					<span> {truncateStr(user.username)}</span>
 					<span className="date"> &#8226; {getTimeDifference(post.created)}</span>
 				</h4>
 				<p>{post.content}</p>

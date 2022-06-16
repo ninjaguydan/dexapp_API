@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
 import UserIcon from "./UserIcon"
 import { FaAngleDown } from "react-icons/fa"
+import { truncateStr } from "../../Helpers/Helpers"
 
-const DesktopNav = ({ searchBtn }) => {
+const DesktopNav = ({ searchBtn, openDrop }) => {
 	const user = useSelector((state) => state.loggedUser)
 
 	return (
@@ -20,8 +21,8 @@ const DesktopNav = ({ searchBtn }) => {
 				{user ? (
 					<li className="nav-user-desk">
 						<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} mobileNav={"nav-user-icon"} />
-						<button className="btn">
-							{user.username}
+						<button className="btn" onClick={openDrop}>
+							{truncateStr(user.username)}
 							<FaAngleDown />
 						</button>
 					</li>

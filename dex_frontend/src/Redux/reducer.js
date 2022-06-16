@@ -8,7 +8,6 @@ const initState = {
 		user_img: "m2",
 		bg_color: "green",
 	},
-	menuIsOpen: false,
 	users: [
 		{
 			id: 1,
@@ -95,11 +94,6 @@ function reducer(state = initState, action) {
 				...state,
 				loggedUser: { ...action.newUser },
 				users: [...state.users, action.newUser],
-			}
-		case "users/MENU_TOGGLE":
-			return {
-				...state,
-				menuIsOpen: !state.menuIsOpen,
 			}
 		case "users/UPDATE":
 			return {

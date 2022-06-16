@@ -36,8 +36,8 @@ const Login = () => {
 				<hr />
 				{error && <strong className="error">Email or password does not match our records</strong>}
 				<form onSubmit={(e) => onSubmit(e)}>
-					<FormInput label="Username" name="username" value={creds.username} handleChange={handleChange} />
-					<FormInput label="Password" name="password" value={creds.password} handleChange={handleChange} type="password" />
+					<FormInput label="Username" name="username" value={creds.username} handleChange={handleChange} error={true} />
+					<FormInput label="Password" name="password" value={creds.password} handleChange={handleChange} type="password" error={true} />
 					<div className="btn-container">
 						<button className="btn primary">Log In</button>
 						<Link to="/register" className="btn secondary">

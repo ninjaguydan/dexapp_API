@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaRegHeart } from "react-icons/fa"
-import { getTimeDifference } from "../Helpers/Helpers"
+import { getTimeDifference, truncateStr } from "../Helpers/Helpers"
 import UserIcon from "./Navigation/UserIcon"
 
 function Reply({ reply }) {
@@ -12,8 +12,8 @@ function Reply({ reply }) {
 			<UserIcon userImg={user.user_img} userName={user.username} userColor={user.bg_color} />
 			<div className="content">
 				<h4>
-					<Link to={`/profile/${""}`}>{user.name}</Link>
-					<span> {user.username}</span>
+					<Link to={`/profile/${""}`}>{truncateStr(user.name)}</Link>
+					<span> {truncateStr(user.username)}</span>
 					<span className="date"> &#8226; {getTimeDifference(reply.created)}</span>
 				</h4>
 				<p>{reply.content}</p>

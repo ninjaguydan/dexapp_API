@@ -23,6 +23,13 @@ export function renderStars(num) {
 	}
 	return result
 }
+export function truncateStr(string) {
+	if (string.length > 13) {
+		let str = string.substring(0, 12)
+		return `${str}...`
+	}
+	return string
+}
 export function titleCase(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
 }

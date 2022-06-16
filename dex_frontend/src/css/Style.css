@@ -354,7 +354,7 @@ Navigation Styles
 	position: relative;
 	top: 5px;
 }
-.mobile-nav .dex-icon {
+.dex-icon {
 	position: relative;
 	width: 25px;
 	top: 5px;
@@ -443,6 +443,31 @@ li.nav-user-desk img {
 }
 li.nav-user-desk .btn:hover {
 	color: var(--brand-secondary);
+}
+.dropdown-menu-dark {
+	background-color: var(--brand-gray1);
+}
+.dropdown-menu.dropdown-nav {
+	display: block;
+	position: fixed;
+	top: 4rem;
+	right: 1rem;
+	box-shadow: -4px 4px 8px rgba(39, 39, 39, 0.6);
+}
+.dropdown-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.dropdown-item i {
+	margin-right: 10px;
+}
+.dropdown-item .dex-icon {
+	width: 20px;
+	margin-right: 12px;
+	margin-left: 2px;
+	top: unset;
 }
 
 /*---------- 550px BREAK POINT ----------*/

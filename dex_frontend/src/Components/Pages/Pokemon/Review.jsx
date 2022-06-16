@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
-import { getTimeDifference, titleCase } from "../../../Helpers/Helpers"
+import { getTimeDifference, titleCase, truncateStr } from "../../../Helpers/Helpers"
 import usePokemon from "../../../Helpers/usePokemon"
 
 const Review = ({ review, TL_view = false }) => {
@@ -29,8 +29,8 @@ const Review = ({ review, TL_view = false }) => {
 
 			<div className="content">
 				<h4>
-					<Link to={`/profile/${user.username}`}>{TL_view ? user.username : user.name}</Link>
-					<span> {TL_view ? "reviewed" : user.username}</span>
+					<Link to={`/profile/${user.username}`}>{TL_view ? truncateStr(user.username) : truncateStr(user.name)}</Link>
+					<span> {TL_view ? "reviewed" : truncateStr(user.username)}</span>
 					{TL_view && <Link to={`/pokemon/${pkmn.id}`}> {titleCase(pkmn.name)}</Link>}
 					<span className="date"> &#8226; {getTimeDifference(review.created)}</span>
 				</h4>

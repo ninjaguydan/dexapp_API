@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import DesktopNav from "./DesktopNav"
 
-const Header = ({ searchBtn }) => {
+const Header = ({ searchBtn, openDrop }) => {
 	return (
 		<header className="site-header">
 			<Link to="/" className="header-logo" />
-			<DesktopNav searchBtn={searchBtn} />
+			<DesktopNav searchBtn={searchBtn} openDrop={openDrop} />
 		</header>
 	)
 }

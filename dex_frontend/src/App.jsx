@@ -14,22 +14,24 @@ import Register from "./Components/Pages/Login/Register"
 import Pokemon from "./Components/Pages/Pokemon/Pokemon"
 import Pokedex from "./Components/Pages/Search/Pokedex"
 import User from "./Components/Pages/Profile/User"
+import UserMenu from "./Components/Navigation/UserMenu"
 
 function App() {
 	const loggedUser = useSelector((state) => state.loggedUser)
 	const [showSearchBar, setShowSearchBar] = useState(false)
 	const [menuIsOpen, setMenuIsOpen] = useState(false)
+	const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
 
-	// console.log(loggedUser)
-	// console.log(useSelector((state) => state.users))
+	console.log("entire app rerendered")
 
 	return (
 		<MyRouter>
-			<Header searchBtn={searchBtn} />
+			{dropdownIsOpen && loggedUser ? <UserMenu username={loggedUser.username} openDrop={() => setDropdownIsOpen(!dropdownIsOpen)} /> : null}
+			<Header searchBtn={searchBtn} openDrop={() => setDropdownIsOpen(!dropdownIsOpen)} />
 			<SearchBar show={showSearchBar} />
 			{loggedUser && <MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />}
-			{menuIsOpen && loggedUser ? <UserMenuMobile user={loggedUser} /> : null}
+			{menuIsOpen && loggedUser ? <UserMenuMobile user={loggedUser} openMenu={() => setMenuIsOpen(!menuIsOpen)} /> : null}
 			<MobileNav searchBtn={searchBtn} />
 			<div className="app-container">
 				<Routes>
