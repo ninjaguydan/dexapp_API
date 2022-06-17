@@ -33,6 +33,11 @@ export function truncateStr(string) {
 export function titleCase(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
 }
+export function getRandomInt(min, max) {
+	min = Math.ceil(min)
+	max = Math.floor(max)
+	return Math.floor(Math.random() * (max - min) + min)
+}
 
 function getSeconds(milliseconds) {
 	return milliseconds / 1000

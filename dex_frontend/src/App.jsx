@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Routes, Route, BrowserRouter as MyRouter, Navigate } from "react-router-dom"
+import { Routes, Route, BrowserRouter as MyRouter } from "react-router-dom"
 import { useSelector } from "react-redux"
 // Comps
 import Header from "./Components/Navigation/Header"
@@ -23,7 +23,7 @@ function App() {
 	const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
 
-	console.log("entire app rerendered")
+	console.log("App rerendered")
 
 	return (
 		<MyRouter>

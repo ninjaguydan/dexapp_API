@@ -448,7 +448,7 @@ li.nav-user-desk .btn:hover {
 	background-color: var(--brand-gray1);
 }
 .dropdown-menu.dropdown-nav {
-	display: block;
+	display: none;
 	position: fixed;
 	top: 4rem;
 	right: 1rem;
@@ -487,6 +487,9 @@ li.nav-user-desk .btn:hover {
 	}
 	.mobile-nav-slider {
 		display: none;
+	}
+	.dropdown-menu.dropdown-nav {
+		display: block;
 	}
 }
 /*---------- Mobile Menu Animation ----------*/
