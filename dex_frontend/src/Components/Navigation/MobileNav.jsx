@@ -10,7 +10,7 @@ const MobileNav = ({ searchBtn }) => {
 	return (
 		<nav>
 			<ul className="mobile-nav">
-				<li>{searchBtn}</li>
+				{/* <li>{searchBtn}</li> */}
 				<li>
 					<Link to="/">
 						<i className="material-icons" aria-hidden="true">

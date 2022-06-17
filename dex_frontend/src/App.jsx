@@ -23,13 +23,11 @@ function App() {
 	const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
 	const searchBtn = <SearchBtn toggleSearch={() => setShowSearchBar(!showSearchBar)} />
 
-	console.log("App rerendered")
-
 	return (
 		<MyRouter>
 			{dropdownIsOpen && loggedUser ? <UserMenu username={loggedUser.username} openDrop={() => setDropdownIsOpen(!dropdownIsOpen)} /> : null}
-			<Header searchBtn={searchBtn} openDrop={() => setDropdownIsOpen(!dropdownIsOpen)} />
-			<SearchBar show={showSearchBar} />
+			<Header openDrop={() => setDropdownIsOpen(!dropdownIsOpen)} />
+			{/* <SearchBar show={showSearchBar} /> */}
 			{loggedUser && <MenuBtn openMenu={() => setMenuIsOpen(!menuIsOpen)} menuIsOpen={menuIsOpen} />}
 			{menuIsOpen && loggedUser ? <UserMenuMobile user={loggedUser} openMenu={() => setMenuIsOpen(!menuIsOpen)} /> : null}
 			<MobileNav searchBtn={searchBtn} />

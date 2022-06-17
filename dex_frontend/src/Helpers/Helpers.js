@@ -38,6 +38,20 @@ export function getRandomInt(min, max) {
 	max = Math.floor(max)
 	return Math.floor(Math.random() * (max - min) + min)
 }
+export function addOrdinalSuffix(i) {
+	let j = i % 10,
+		k = i % 100
+	if (j === 1 && k !== 11) {
+		return i + "st"
+	}
+	if (j === 2 && k !== 12) {
+		return i + "nd"
+	}
+	if (j === 3 && k !== 13) {
+		return i + "rd"
+	}
+	return i + "th"
+}
 
 function getSeconds(milliseconds) {
 	return milliseconds / 1000

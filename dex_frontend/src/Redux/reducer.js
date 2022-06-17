@@ -1,12 +1,13 @@
 const initState = {
 	loggedUser: {
-		id: 2,
-		bio: "This is a bio. I can put anything here. Gotta be respectful tho",
-		name: "John Doe",
-		username: "longjonsilver",
-		password: "1234",
-		user_img: "m2",
-		bg_color: "green",
+		id: 1,
+		bio: "The very best.",
+		pronouns: "He/Him",
+		name: "Daniel Thompson",
+		username: "danboy",
+		password: "password",
+		user_img: "m1",
+		bg_color: "red",
 	},
 	users: [
 		{
@@ -50,8 +51,8 @@ const initState = {
 		{ id: 4, name: "Cutie Patooties", members: [184, 547, 423, 443, 447, 350], likes: [], added_by: 3, created: 1655171111085 },
 	],
 	replies: [
-		{ id: 1, content: "Wow son you a big ass hater", created: 1649163929404, added_by: 2, for: "review", forId: 1, likes: [] },
-		{ id: 2, content: "It's not even the best Kanto starter.", created: 1651892729404, added_by: 1, for: "review", forId: 1, likes: [] },
+		{ id: 1, content: "Wow son you a big ass hater", created: 1649163929404, added_by: 2, for: "review", forId: 1 },
+		{ id: 2, content: "It's not even the best Kanto starter.", created: 1651892729404, added_by: 1, for: "review", forId: 1 },
 		{
 			id: 3,
 			content: "Yeah right before they snatched it away one gen later lmaoo",
@@ -59,10 +60,9 @@ const initState = {
 			added_by: 1,
 			for: "review",
 			forId: 2,
-			likes: [],
 		},
-		{ id: 4, content: "Agreed!!!", created: 1651801529404, added_by: 2, for: "post", forId: 3, likes: [] },
-		{ id: 5, content: "We can be friends!", created: 1651801009404, added_by: 2, for: "post", forId: 1, likes: [] },
+		{ id: 4, content: "Agreed!!!", created: 1651801529404, added_by: 2, for: "post", forId: 3 },
+		{ id: 5, content: "We can be friends!", created: 1651801009404, added_by: 2, for: "post", forId: 1 },
 		{
 			id: "b7825e56-078f-4652-be34-af373c8e9c7a",
 			content: "guys. please. they all suck",
@@ -70,8 +70,14 @@ const initState = {
 			added_by: 3,
 			for: "review",
 			forId: 1,
-			likes: [],
 		},
+	],
+	likes: [
+		{ postType: "reply", user: 1, forId: 4 },
+		{ postType: "post", user: 3, forId: 2 },
+		{ postType: "post", user: 1, forId: 2 },
+		{ postType: "post", user: 2, forId: 2 },
+		{ postType: "review", user: 1, forId: 4 },
 	],
 }
 
@@ -87,7 +93,7 @@ function reducer(state = initState, action) {
 		case "users/ON_LOGOUT":
 			return {
 				...state,
-				loggedUser: false,
+				loggedUser: null,
 			}
 		case "users/REGISTER":
 			return {
@@ -110,6 +116,22 @@ function reducer(state = initState, action) {
 						}
 					}
 					return user
+				}),
+			}
+		case "users/LIKE":
+			return {
+				...state,
+				likes: [...state.likes, action.newLike],
+			}
+		case "users/UNLIKE":
+			return {
+				...state,
+				likes: state.likes.filter((like) => {
+					if (like.postType !== action.toDel.name || like.user !== action.toDel.user) {
+						return like
+					} else {
+						return like.forId !== action.toDel.forId
+					}
 				}),
 			}
 		case "post/CREATE":

@@ -1,19 +1,35 @@
 import ReplyList from "../../ReplyList"
 import Loading from "../../Loader/Loading"
 import UserIcon from "../../Navigation/UserIcon"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { FaStar, FaRegStar, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
+import { FaStar, FaRegStar, FaHeart, FaRegHeart, FaRegCommentAlt } from "react-icons/fa"
 import { getTimeDifference, titleCase, truncateStr } from "../../../Helpers/Helpers"
 import usePokemon from "../../../Helpers/usePokemon"
 
 const Review = ({ review, TL_view = false }) => {
+	let dispatch = useDispatch()
 	const [repliesVisible, setRepliesVisible] = useState(false)
 	const replies = useSelector((state) => state.replies.filter((reply) => reply.for === "review" && reply.forId === review.id))
 	const arr = [...Array(10).keys()]
 	let user = useSelector((state) => state.users.filter((user) => user.id === review.added_by)[0])
+	let likes = useSelector((state) => state.likes.filter((like) => like.postType === "review" && like.forId === review.id))
+	let loggedUser = useSelector((state) => state.loggedUser)
 	const { data: pkmn, isLoading } = usePokemon(review.pkmn)
+
+	function toggleLike() {
+		if (!loggedUser) {
+			return
+		}
+		if (likes.find((like) => like.user === loggedUser.id)) {
+			let toDel = { name: "review", forId: review.id, user: loggedUser.id }
+			dispatch({ type: "users/UNLIKE", toDel })
+		} else {
+			let newLike = { postType: "review", user: loggedUser.id, forId: review.id }
+			dispatch({ type: "users/LIKE", newLike })
+		}
+	}
 
 	if (isLoading) {
 		return <Loading />
@@ -46,8 +62,9 @@ const Review = ({ review, TL_view = false }) => {
 				<p>{review.content}</p>
 			</div>
 			<div className="icon-container">
-				<button className="fav">
-					<FaRegHeart /> {review.likes.length}
+				<button className="fav" onClick={() => toggleLike()}>
+					{loggedUser && likes.find((like) => like.user === loggedUser.id) ? <FaHeart style={{ color: "#009df1" }} /> : <FaRegHeart />}
+					{likes.length}
 				</button>
 				<button
 					className="fav"

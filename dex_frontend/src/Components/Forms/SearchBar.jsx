@@ -1,10 +1,15 @@
 import React, { useState } from "react"
 
-const Search = ({ show }) => {
+const Search = ({ show, search }) => {
 	const [q, setQ] = useState("")
-	const [searchParam] = useState(["name"])
+
 	return (
-		<form action="/search/" role="search" className={`search-form ${!show && "hidden"}`}>
+		<form
+			className={`search-form ${!show && "hidden"}`}
+			onSubmit={(e) => {
+				search(e, q)
+			}}
+		>
 			{/* <select name="filter">
 				<option value="pokemon">Pokemon</option>
 				<option value="people">People</option>
