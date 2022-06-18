@@ -1,0 +1,1 @@
+web: gunicorn dex_react.wsgi
