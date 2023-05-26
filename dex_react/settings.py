@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['https://web-production-88d9.up.railway.app/']
+ALLOWED_HOSTS = ['web-production-88d9.up.railway.app/']
 
 AUTH_USER_MODEL = "api.User"
 
